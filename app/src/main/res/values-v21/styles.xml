@@ -33,6 +33,7 @@
 
         <item name="colorButtonNormal">@color/primary</item>
         <item name="android:textAppearanceButton">@style/TextAppearance.AppCompat.Button.Custom</item>
+
     </style>
 
 
