@@ -1,6 +1,7 @@
 package com.maxchehab.bulldogbucks;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.content.Intent;
 import android.view.Display;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -102,6 +104,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_Dark_Dialog);
+        progressDialog.setCancelable(false);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
@@ -189,9 +192,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess(String userID, String pin) {
         _loginButton.setEnabled(true);
-        Intent intent = new Intent(this, BalanceActivity.class);
+        Intent intent = new Intent(this, BalanceActivity2.class);
         intent.putExtra("userID", userID);
         intent.putExtra("pin", pin);
+
+
 
         startActivity(intent);
         finish();
