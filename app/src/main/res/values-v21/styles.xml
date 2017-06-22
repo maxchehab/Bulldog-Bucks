@@ -36,6 +36,11 @@
 
     </style>
 
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:colorAccent">@color/primary</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:colorBackground">@color/white</item>
+    </style>
 
 
     <style name="TextAppearance.AppCompat.Button.Custom">

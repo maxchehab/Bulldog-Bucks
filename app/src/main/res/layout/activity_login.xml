@@ -12,7 +12,7 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <ImageView android:src="@drawable/ic_gu_bulldogs_logo"
+        <ImageView android:src="@drawable/ic_logo"
             android:id="@+id/input_logo"
             android:layout_width="150dp"
             android:layout_height="150dp"

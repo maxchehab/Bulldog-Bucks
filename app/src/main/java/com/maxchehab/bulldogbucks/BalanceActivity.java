@@ -1,13 +1,17 @@
 package com.maxchehab.bulldogbucks;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +35,11 @@ public class BalanceActivity extends AppCompatActivity {
 
     SwipeRefreshLayout swipeContainer;
     @Bind(R.id.balanceText) TextView _balanceText;
+    @Bind(R.id.textLogout) TextView _logoutText;
+    @Bind(R.id.imageLogout) ImageView _logoutImage;
 
+
+    Boolean retry = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +61,18 @@ public class BalanceActivity extends AppCompatActivity {
         // Configure the refreshing colors
         swipeContainer.setColorSchemeResources(R.color.swipe);
 
+        _logoutImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+        _logoutText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
 
         updateBalance();
     }
@@ -63,6 +83,27 @@ public class BalanceActivity extends AppCompatActivity {
 
         updateBalance();
         super.onResume();
+    }
+
+
+    void logout(){
+
+        new AlertDialog.Builder(this,R.style.AlertDialogCustom)
+                .setTitle("Logout")
+
+                .setMessage("Do you really want to logout?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        getBaseContext().getSharedPreferences("data", 0).edit().clear().commit();
+                        Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                        Toast.makeText(BalanceActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
+                    }})
+                .setNegativeButton("no", null).show();
+
     }
 
     void updateBalance(){
@@ -77,7 +118,6 @@ public class BalanceActivity extends AppCompatActivity {
             finish();
         }
 
-
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://67.204.152.242/bulldogbucks/balance.php";
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
@@ -86,18 +126,27 @@ public class BalanceActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Log.d("Response", response);
+                        try{
+                            JsonParser jp = new JsonParser(); //from gson
+                            JsonElement root = jp.parse(response); //Convert the input stream to a json element
 
-                        JsonParser jp = new JsonParser(); //from gson
-                        JsonElement root = jp.parse(response); //Convert the input stream to a json element
+                            JsonObject rootobj = root.getAsJsonObject(); //May be an array, may be an object.
 
-                        JsonObject rootobj = root.getAsJsonObject(); //May be an array, may be an object.
+                            if(rootobj.get("success").getAsBoolean() == true) {
+                                _balanceText.setText(rootobj.get("balance").getAsString());
+                            }else{
+                                Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
 
-                        if(rootobj.get("success").getAsBoolean() == true) {
-                            _balanceText.setText(rootobj.get("balance").getAsString());
-                        }else{
-                            Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
-
+                            }
+                        }catch(Exception e){
+                            if(retry){
+                                logout();
+                            }else{
+                                retry = true;
+                                updateBalance();
+                            }
                         }
+
                     }
                 },
                 new Response.ErrorListener()
