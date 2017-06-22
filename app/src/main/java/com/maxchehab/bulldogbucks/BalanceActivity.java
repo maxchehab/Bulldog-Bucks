@@ -146,7 +146,7 @@ public class BalanceActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://67.204.152.242/bulldogbucks/balance.php")
+                .url("http://bulldogbucks.maxchehab.com/balance.php")
                 .method("POST", RequestBody.create(null, new byte[0]))
                 .post(requestBody)
                 .build();

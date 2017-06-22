@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://67.204.152.242/bulldogbucks/authenticate.php")
+                .url("http://bulldogbucks.maxchehab.com/authenticate.php")
                 .method("POST", RequestBody.create(null, new byte[0]))
                 .post(requestBody)
                 .build();
@@ -178,62 +178,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
-
-        /*RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d("Response", response);
-
-                        JsonParser jp = new JsonParser(); //from gson
-                        JsonElement root = jp.parse(response); //Convert the input stream to a json element
-
-                        JsonObject rootobj = root.getAsJsonObject(); //May be an array, may be an object.
-
-                        if(rootobj.get("success").getAsBoolean() == true) {
-
-                            if(_remember.isChecked()){
-                                SharedPreferences sharedPref = getSharedPreferences("data", MODE_PRIVATE);
-
-                                SharedPreferences.Editor editor = sharedPref.edit();
-                                editor.putString("pin", pin);
-                                editor.putString("userID", userID);
-                                editor.commit();
-                            }
-
-
-                            progressDialog.dismiss();
-                            onLoginSuccess();
-                        }else{
-                            progressDialog.dismiss();
-                            onLoginFailed();
-                        }
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        onLoginFailed();
-                        Log.d("Error.Response", error.toString());
-                    }
-                }
-        ) {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("pin", pin);
-                params.put("userID", userID);
-
-                return params;
-            }
-        };
-        queue.add(postRequest);*/
 
 
 
