@@ -22,7 +22,7 @@ tools:context="com.maxchehab.bulldogbucks.BalanceActivity">
             android:gravity="center"
             android:textColor="@color/white"
             android:includeFontPadding="false"
-            android:text="$10.00"
+            android:text="[balance]"
             android:textAlignment="center"
             android:textSize="50sp" />
     </LinearLayout>
