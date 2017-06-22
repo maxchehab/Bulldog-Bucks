@@ -15,21 +15,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class BalanceActivity extends AppCompatActivity {
 
@@ -37,6 +42,10 @@ public class BalanceActivity extends AppCompatActivity {
     @Bind(R.id.balanceText) TextView _balanceText;
     @Bind(R.id.textLogout) TextView _logoutText;
     @Bind(R.id.imageLogout) ImageView _logoutImage;
+
+    String pin;
+    String userID;
+    boolean paused = false;
 
 
     Boolean retry = false;
@@ -46,6 +55,8 @@ public class BalanceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_balance);
         ButterKnife.bind(this);
 
+        pin = getIntent().getStringExtra("pin");
+        userID = getIntent().getStringExtra("userID");
 
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
@@ -64,13 +75,13 @@ public class BalanceActivity extends AppCompatActivity {
         _logoutImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logout();
+                logout(true);
             }
         });
         _logoutText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logout();
+                logout(true);
             }
         });
 
@@ -79,99 +90,111 @@ public class BalanceActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        // Runtime.getRuntime().gc();
+        SharedPreferences sharedPref = getSharedPreferences("data", MODE_PRIVATE);
+        if((!sharedPref.contains("pin") || !sharedPref.contains("userID")) && paused){
+            logout(false);
+        }else{
+            updateBalance();
+        }
+        //updateBalance();
 
-        updateBalance();
         super.onResume();
+    }
+    @Override
+    protected  void onPause(){
+        paused = true;
+
+        super.onPause();
     }
 
 
-    void logout(){
+    void logout(boolean ask){
+        if(ask){
+            new AlertDialog.Builder(this,R.style.AlertDialogCustom)
+                    .setTitle("Logout")
 
-        new AlertDialog.Builder(this,R.style.AlertDialogCustom)
-                .setTitle("Logout")
+                    .setMessage("Do you really want to logout?")
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton("yes", new DialogInterface.OnClickListener() {
 
-                .setMessage("Do you really want to logout?")
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            getBaseContext().getSharedPreferences("data", 0).edit().clear().commit();
+                            Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                            Toast.makeText(BalanceActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
+                        }})
+                    .setNegativeButton("no", null).show();
+        }else{
+            getBaseContext().getSharedPreferences("data", 0).edit().clear().commit();
+            Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+            startActivity(intent);
+            finish();
+            Toast.makeText(BalanceActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
+        }
 
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        getBaseContext().getSharedPreferences("data", 0).edit().clear().commit();
-                        Intent intent = new Intent(getBaseContext(), LoginActivity.class);
-                        startActivity(intent);
-                        finish();
-                        Toast.makeText(BalanceActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
-                    }})
-                .setNegativeButton("no", null).show();
 
     }
 
     void updateBalance(){
-        SharedPreferences sharedPref = getSharedPreferences("data", MODE_PRIVATE);
+        OkHttpClient client = new OkHttpClient();
 
-        final String pin = sharedPref.getString("pin", null);
-        final String userID = sharedPref.getString("userID", null);
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("pin", pin)
+                .addFormDataPart("userID",userID)
+                .build();
 
-        if(!sharedPref.contains("pin") || !sharedPref.contains("userID")){
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        Request request = new Request.Builder()
+                .url("http://67.204.152.242/bulldogbucks/balance.php")
+                .method("POST", RequestBody.create(null, new byte[0]))
+                .post(requestBody)
+                .build();
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://67.204.152.242/bulldogbucks/balance.php";
-        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d("Response", response);
-                        try{
-                            JsonParser jp = new JsonParser(); //from gson
-                            JsonElement root = jp.parse(response); //Convert the input stream to a json element
+        final Gson gson = new Gson();
 
-                            JsonObject rootobj = root.getAsJsonObject(); //May be an array, may be an object.
 
-                            if(rootobj.get("success").getAsBoolean() == true) {
-                                _balanceText.setText(rootobj.get("balance").getAsString());
-                            }else{
-                                Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("Response", e.toString());
+
+                Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                String data = response.body().string();
+                Log.d("Response", data );
+                try{
+                    JsonParser jp = new JsonParser(); //from gson
+                    JsonElement root = jp.parse(data); //Convert the input stream to a json element
+                    JsonObject rootobj = root.getAsJsonObject();
+                    if (rootobj.get("success").getAsBoolean()) {
+                        final String balance = rootobj.get("balance").getAsString();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                _balanceText.setText(balance);
 
                             }
-                        }catch(Exception e){
-                            if(retry){
-                                logout();
-                            }else{
-                                retry = true;
-                                updateBalance();
-                            }
-                        }
+                        });
+                    }else{
+                        Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
 
                     }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("Error.Response", error.toString());
-                        Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
+                }catch(Exception e){
+                    if(retry){
+                        logout(false);
+                    }else{
+                        retry = true;
+                        updateBalance();
                     }
                 }
-        ) {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String>  params = new HashMap<String, String>();
 
-
-
-                params.put("pin", pin);
-                params.put("userID", userID);
-
-                return params;
             }
-        };
-        queue.add(postRequest);
+        });
 
         swipeContainer.setRefreshing(false);
     }
