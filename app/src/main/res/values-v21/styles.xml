@@ -50,10 +50,13 @@
 
 
     <color name="simpletooltip_background">@color/primary</color>
-    <color name="simpletooltip_text">@color/white</color>
+    <color name="simpletooltip_text">#B3C5D6</color>
     <color name="simpletooltip_arrow">@color/primary</color>
+
+    <dimen name="simpletooltip_padding">15dp</dimen>
 
     <style name="simpletooltip_default" parent="@android:style/TextAppearance">
         <item name="android:textSize">14sp</item>
+        <item name="android:layout_margin">10dp</item>
     </style>
 </resources>

@@ -7,8 +7,8 @@ android {
         applicationId 'com.maxchehab.bulldogbucks'
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "4"
     }
     buildTypes {
         release {

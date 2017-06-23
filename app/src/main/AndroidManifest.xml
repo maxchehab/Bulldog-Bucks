@@ -22,10 +22,6 @@
             android:name=".BalanceActivity"
             android:theme="@style/AppTheme.Dark"
             android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".BalanceActivity2"
-            android:theme="@style/AppTheme.Dark"
-            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

@@ -1,44 +1,29 @@
 package com.maxchehab.bulldogbucks;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Point;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import android.content.Intent;
-import android.view.Display;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.Bind;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.HttpUrl;
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -192,7 +177,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess(String userID, String pin) {
         _loginButton.setEnabled(true);
-        Intent intent = new Intent(this, BalanceActivity2.class);
+        Intent intent = new Intent(this, BalanceActivity.class);
         intent.putExtra("userID", userID);
         intent.putExtra("pin", pin);
 
