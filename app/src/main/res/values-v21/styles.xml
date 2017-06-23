@@ -53,6 +53,7 @@
     <color name="simpletooltip_text">@color/white</color>
     <color name="simpletooltip_arrow">@color/primary</color>
 
-
-
+    <style name="simpletooltip_default" parent="@android:style/TextAppearance">
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

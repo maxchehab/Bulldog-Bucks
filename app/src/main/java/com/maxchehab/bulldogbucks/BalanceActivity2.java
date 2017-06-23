@@ -14,9 +14,11 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,8 +53,10 @@ public class BalanceActivity2 extends AppCompatActivity {
     String pin;
     String userID;
     boolean paused = false;
+    boolean loading = true;
 
     ProgressDialog progressDialog;
+    ProgressDialog freezeDialog;
 
     @Bind(R.id.freezeCardInfo) ImageView _freezeCardInfo;
     @Bind(R.id.freezeCardText) TextView _freezeCardText;
@@ -72,7 +76,7 @@ public class BalanceActivity2 extends AppCompatActivity {
     @Bind(R.id.balanceDesc) TextView _balanceDesc;
 
 
-
+    String verbage;
 
     Boolean retry = false;
     @Override
@@ -88,6 +92,8 @@ public class BalanceActivity2 extends AppCompatActivity {
 
 
         progressDialog = new ProgressDialog(BalanceActivity2.this, R.style.AppTheme_Dark_Dialog);
+        freezeDialog = new ProgressDialog(BalanceActivity2.this, R.style.AppTheme_Dark_Dialog);
+
 
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
@@ -122,6 +128,33 @@ public class BalanceActivity2 extends AppCompatActivity {
                 logout(true);
             }
         });
+
+        _freezeCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!loading){
+                    verbage = "Unfreeze";
+
+                    if(_freezeCard.isChecked()){
+                        verbage = "Freeze";
+                    }
+                    new AlertDialog.Builder(v.getContext(),R.style.AlertDialogCustom)
+                            .setTitle(verbage + " card")
+
+                            .setMessage("Do you really want to " + verbage.toLowerCase() +  " your card?")
+                            .setIcon(R.drawable.ic_warning)
+                            .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    freezeCard(verbage.toLowerCase());
+                                }})
+                            .setNegativeButton("no", null).show();
+                }
+                _freezeCard.setChecked(!_freezeCard.isChecked());
+
+            }
+        });
+
 
         updateBalance();
     }
@@ -174,8 +207,118 @@ public class BalanceActivity2 extends AppCompatActivity {
 
     }
 
-    void updateBalance(){
+    void freezeCard(final String action){
+        loading = true;
+        Log.d("freezing",action + ", " + userID + ", " + pin);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                freezeDialog.setCancelable(false);
+                freezeDialog.setIndeterminate(true);
+                if(action.equals("freeze")){
+                    freezeDialog.setMessage("Freezing card....");
+                }else{
+                    freezeDialog.setMessage("Unfreezing card....");
+                }
+                freezeDialog.show();
+            }
+        });
 
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("pin", pin)
+                .addFormDataPart("userID",userID)
+                .addFormDataPart("action",action)
+                .build();
+
+        Request request = new Request.Builder()
+                .url("http://bulldogbucks.maxchehab.com/freezeAccount.php")
+                .method("POST", RequestBody.create(null, new byte[0]))
+                .post(requestBody)
+                .build();
+
+        final Gson gson = new Gson();
+
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("Freeze Response", e.toString());
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d("equals","<" + action + ">");
+                        if(action.equals("freeze")){
+                            Toast.makeText(getBaseContext(), "Freezing card failed", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(getBaseContext(), "Unfreezing card failed", Toast.LENGTH_LONG).show();
+                        }
+                        freezeDialog.dismiss();
+                        loading = false;
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                String data = response.body().string();
+                Log.d("Freeze Response", data );
+                try{
+                    JsonParser jp = new JsonParser(); //from gson
+                    JsonElement root = jp.parse(data); //Convert the input stream to a json element
+                    JsonObject rootobj = root.getAsJsonObject();
+                    if (rootobj.get("success").getAsBoolean()) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(action.equals("freeze")){
+                                    _freezeCardText.setText("Unfreeze card");
+                                    _freezeCard.setChecked(true);
+
+                                }else{
+                                    _freezeCardText.setText("Freeze card");
+                                    _freezeCard.setChecked(false);
+
+                                }
+                                loading = false;
+                                freezeDialog.dismiss();
+                            }
+                        });
+                    }else{
+                        if(action.equals("freeze")){
+                            Toast.makeText(getBaseContext(), "Freezing card failed", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(getBaseContext(), "Unfreezing card failed", Toast.LENGTH_LONG).show();
+                        }
+                        freezeDialog.dismiss();
+                    }
+                }catch(Exception e){
+                    Log.d("Freeze error", e.getMessage());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(action.equals("freeze")){
+                                Toast.makeText(getBaseContext(), "Freezing card failed", Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(getBaseContext(), "Unfreezing card failed", Toast.LENGTH_LONG).show();
+                            }
+                            loading = false;
+                            freezeDialog.dismiss();
+                        }
+                    });
+
+                }
+
+            }
+        });
+
+    }
+
+    void updateBalance(){
+        loading = true;
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -208,11 +351,12 @@ public class BalanceActivity2 extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
                 Log.d("Response", e.toString());
 
-                Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
+                        loading = false;
                     }
                 });
             }
@@ -227,6 +371,7 @@ public class BalanceActivity2 extends AppCompatActivity {
                     JsonObject rootobj = root.getAsJsonObject();
                     if (rootobj.get("success").getAsBoolean()) {
                         final String balance = rootobj.get("balance").getAsString();
+                        final boolean frozen = rootobj.get("frozen").getAsBoolean();
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -251,16 +396,28 @@ public class BalanceActivity2 extends AppCompatActivity {
                                 _logoutText.setVisibility(View.VISIBLE);
                                 _logoImage.setVisibility(View.VISIBLE);
 
+                                _freezeCard.setChecked(frozen);
+                                if(frozen){
+                                    _freezeCardText.setText("Unfreeze card");
+                                }else{
+                                    _freezeCardText.setText("Freeze card");
+                                }
+                                loading = false;
                                 progressDialog.dismiss();
                             }
                         });
                     }else{
                         Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
-
+                        progressDialog.dismiss();
                     }
                 }catch(Exception e){
                     if(retry){
-                        logout(false);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                logout(false);
+                            }
+                        });
                     }else{
                         retry = true;
                         updateBalance();
