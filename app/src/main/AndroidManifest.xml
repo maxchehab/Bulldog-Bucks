@@ -41,6 +41,9 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/balance_widget_large_info" />
         </receiver>
+        <service android:name=".UpdateLargeWidgetService"></service>
+        <service android:name=".UpdateSmallWidgetService"></service>
+
     </application>
 
 </manifest>

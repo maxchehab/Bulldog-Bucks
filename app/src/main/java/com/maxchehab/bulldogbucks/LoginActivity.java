@@ -1,6 +1,8 @@
 package com.maxchehab.bulldogbucks;
 
 import android.app.ProgressDialog;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -181,11 +183,24 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra("userID", userID);
         intent.putExtra("pin", pin);
 
-
+        updateWidgets();
 
         startActivity(intent);
         finish();
     }
+
+    private void updateWidgets(){
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
+        int[] largeAppWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, BalanceWidgetLarge.class));
+        if (largeAppWidgetIds.length > 0) {
+            new BalanceWidgetLarge().onUpdate(this, appWidgetManager, largeAppWidgetIds);
+        }
+        int[] smallAppWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, BalanceWidgetSmall.class));
+        if (smallAppWidgetIds.length > 0) {
+            new BalanceWidgetSmall().onUpdate(this, appWidgetManager, smallAppWidgetIds);
+        }
+    }
+
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();

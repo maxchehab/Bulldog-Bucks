@@ -2,6 +2,8 @@ package com.maxchehab.bulldogbucks;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +25,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -167,9 +172,9 @@ public class BalanceActivity extends AppCompatActivity {
     }
 
 
-    void logout(boolean ask){
-        if(ask){
-            new AlertDialog.Builder(this,R.style.AlertDialogCustom)
+    void logout(boolean ask) {
+        if (ask) {
+            new AlertDialog.Builder(this, R.style.AlertDialogCustom)
                     .setTitle("Logout")
 
                     .setMessage("Do you really want to logout?")
@@ -179,20 +184,35 @@ public class BalanceActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             getBaseContext().getSharedPreferences("data", 0).edit().clear().commit();
                             Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+                            updateWidgets();
                             startActivity(intent);
+
                             finish();
                             Toast.makeText(BalanceActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
-                        }})
+                        }
+                    })
                     .setNegativeButton("no", null).show();
-        }else{
+        } else {
             getBaseContext().getSharedPreferences("data", 0).edit().clear().commit();
             Intent intent = new Intent(getBaseContext(), LoginActivity.class);
             startActivity(intent);
             finish();
             Toast.makeText(BalanceActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
+
+            updateWidgets();
         }
+    }
 
-
+    private void updateWidgets(){
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
+        int[] largeAppWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, BalanceWidgetLarge.class));
+        if (largeAppWidgetIds.length > 0) {
+            new BalanceWidgetLarge().onUpdate(this, appWidgetManager, largeAppWidgetIds);
+        }
+        int[] smallAppWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, BalanceWidgetSmall.class));
+        if (smallAppWidgetIds.length > 0) {
+            new BalanceWidgetSmall().onUpdate(this, appWidgetManager, smallAppWidgetIds);
+        }
     }
 
     void freezeCard(final String action){
@@ -390,6 +410,18 @@ public class BalanceActivity extends AppCompatActivity {
                                 }else{
                                     _freezeCardText.setText("Freeze card");
                                 }
+
+
+                                DateFormat dfTime = new SimpleDateFormat("hh:mm a");
+                                String time = dfTime.format(Calendar.getInstance().getTime());
+
+                                SharedPreferences sharedPref = getSharedPreferences("data", MODE_APPEND);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putString("balance", balance);
+                                editor.putString("updateTime", time);
+                                editor.commit();
+                                updateWidgets();
+
                                 loading = false;
                                 progressDialog.dismiss();
                             }
@@ -403,9 +435,10 @@ public class BalanceActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                logout(false);
+                                Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
                             }
                         });
+                        retry = false;
                     }else{
                         retry = true;
                         updateBalance();

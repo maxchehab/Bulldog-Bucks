@@ -4,6 +4,7 @@
     xmlns:autofit="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/rounded_layout">
     <LinearLayout
+        android:id="@+id/widgetLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -33,7 +34,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="$743.23"
+
+                android:layout_gravity="end"
+                android:textAlignment="textEnd"
+                android:text="Login"
                 android:textColor="@color/primary"
                 android:textSize="50dp" />
             <TextView
@@ -41,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="Bulldog Bucks Balance"
+                android:text="Please select 'Remember me'"
                 android:textAlignment="textEnd"
                 android:textColor="@color/primary"
                 android:textSize="15dp" />
