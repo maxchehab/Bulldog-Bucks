@@ -5,3 +5,5 @@ This android application was inspired by [Rudy Bermudez](https://github.com/Rudy
 
 
 Student ID's and PIN's are only saved locally on the mobile device.
+
+Install the android application from the [Google Play Store](https://play.google.com/store/apps/details?id=com.maxchehab.bulldogbucks) or download the source from this repository.
