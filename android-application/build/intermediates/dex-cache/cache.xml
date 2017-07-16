@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/media/maxchehab/Drive 1/Github/Bulldog-Bucks/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/media/maxchehab/Drive 1/Github/Bulldog-Bucks/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_33374048bf10c8156e666933a49a02599d575785/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/maxchehab/Drive 1/Github/Bulldog-Bucks/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="fde99db378171fc28899e52a4d0dda2aa133ca05">
+        <dex dex="/media/maxchehab/Drive 1/Github/Bulldog-Bucks/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_dd96b91331bc611e7f9e4712e66184215a8e08b1/classes.dex" />
+    </item>
+
+</items>
