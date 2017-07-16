@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://bulldogbucks.maxchehab.com/authenticate.php")
+                .url("http://104.236.141.69/bulldogbucks/authenticate.php")
                 .method("POST", RequestBody.create(null, new byte[0]))
                 .post(requestBody)
                 .build();

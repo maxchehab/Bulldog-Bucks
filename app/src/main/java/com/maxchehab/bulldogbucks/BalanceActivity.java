@@ -242,7 +242,7 @@ public class BalanceActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://bulldogbucks.maxchehab.com/freezeAccount.php")
+                .url("http://104.236.141.69/bulldogbucks/freezeAccount.php")
                 .method("POST", RequestBody.create(null, new byte[0]))
                 .post(requestBody)
                 .build();
@@ -346,7 +346,7 @@ public class BalanceActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://bulldogbucks.maxchehab.com/balance.php")
+                .url("http://104.236.141.69/bulldogbucks/balance.php")
                 .method("POST", RequestBody.create(null, new byte[0]))
                 .post(requestBody)
                 .build();
