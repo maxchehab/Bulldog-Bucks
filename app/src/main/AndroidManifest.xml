@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:screenOrientation="portrait"
-            android:name=".LoginActivity"
+            android:name="com.maxchehab.bulldogbucks.LoginActivity"
             android:theme="@style/AppTheme.Dark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

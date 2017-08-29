@@ -53,7 +53,7 @@
             <EditText android:id="@+id/input_PIN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:inputType="numberPassword"
                 android:hint="PIN"/>
         </android.support.design.widget.TextInputLayout>
 
