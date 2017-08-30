@@ -7,10 +7,16 @@ package com.maxchehab.bulldogbucks;
 public class Credential {
     private String userID;
     private String password;
+    private boolean desiredCardStatus;
 
     public Credential(String userID, String password){
         this.userID = userID;
         this.password = password;
+    }
+    public Credential(String userID, String password, boolean desiredCardStatus){
+        this.userID = userID;
+        this.password = password;
+        this.desiredCardStatus = desiredCardStatus;
     }
 
     public String getUserId(){
@@ -19,5 +25,9 @@ public class Credential {
 
     public String getPassword(){
         return password;
+    }
+
+    public boolean getDesiredCardStatus(){
+        return desiredCardStatus;
     }
 }

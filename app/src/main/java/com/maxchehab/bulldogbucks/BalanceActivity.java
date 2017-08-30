@@ -217,6 +217,7 @@ public class BalanceActivity extends AppCompatActivity {
     }
 
     void freezeCard(final String action){
+
         loading = true;
         Log.d("freezing",action + ", " + userID + ", " + pin);
         runOnUiThread(new Runnable() {
@@ -233,28 +234,11 @@ public class BalanceActivity extends AppCompatActivity {
             }
         });
 
-        OkHttpClient client = new OkHttpClient();
 
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("pin", pin)
-                .addFormDataPart("userID",userID)
-                .addFormDataPart("action",action)
-                .build();
-
-        Request request = new Request.Builder()
-                .url("http://104.236.141.69/bulldogbucks/freezeAccount.php")
-                .method("POST", RequestBody.create(null, new byte[0]))
-                .post(requestBody)
-                .build();
-
-        final Gson gson = new Gson();
-
-
-        client.newCall(request).enqueue(new Callback() {
+        new FreezeCard(new OnFreezeCardListener() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.d("Freeze Response", e.toString());
+            public void onFailure(String error) {
+                Log.d("Freeze Response", error);
 
                 runOnUiThread(new Runnable() {
                     @Override
@@ -272,58 +256,25 @@ public class BalanceActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(Call call, final Response response) throws IOException {
-                String data = response.body().string();
-                Log.d("Freeze Response", data );
-                try{
-                    JsonParser jp = new JsonParser(); //from gson
-                    JsonElement root = jp.parse(data); //Convert the input stream to a json element
-                    JsonObject rootobj = root.getAsJsonObject();
-                    if (rootobj.get("success").getAsBoolean()) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if(action.equals("freeze")){
-                                    _freezeCardText.setText("Unfreeze card");
-                                    _freezeCard.setChecked(true);
-
-                                }else{
-                                    _freezeCardText.setText("Freeze card");
-                                    _freezeCard.setChecked(false);
-
-                                }
-                                loading = false;
-                                freezeDialog.dismiss();
-                            }
-                        });
-                    }else{
+            public void onSuccess() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
                         if(action.equals("freeze")){
-                            Toast.makeText(getBaseContext(), "Freezing card failed", Toast.LENGTH_LONG).show();
+                            _freezeCardText.setText("Unfreeze card");
+                            _freezeCard.setChecked(true);
+
                         }else{
-                            Toast.makeText(getBaseContext(), "Unfreezing card failed", Toast.LENGTH_LONG).show();
+                            _freezeCardText.setText("Freeze card");
+                            _freezeCard.setChecked(false);
+
                         }
+                        loading = false;
                         freezeDialog.dismiss();
                     }
-                }catch(Exception e){
-                    Log.d("Freeze error", e.getMessage());
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if(action.equals("freeze")){
-                                Toast.makeText(getBaseContext(), "Freezing card failed", Toast.LENGTH_LONG).show();
-                            }else{
-                                Toast.makeText(getBaseContext(), "Unfreezing card failed", Toast.LENGTH_LONG).show();
-                            }
-                            loading = false;
-                            freezeDialog.dismiss();
-                        }
-                    });
-
-                }
-
+                });
             }
-        });
-
+        }).execute(new Credential(userID,pin,action.equals("freeze")));
     }
 
     void updateBalance(){
