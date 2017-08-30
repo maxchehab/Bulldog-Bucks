@@ -36,7 +36,7 @@ public class UpdateSmallWidgetService extends Service {
     public void onStart(Intent intent, int startId) {
         RemoteViews remoteViews = new RemoteViews(this.getApplicationContext().getPackageName(),R.layout.balance_widget_small);
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this.getApplicationContext());
-        String balance = "Login";
+        String balance = "CheckLogin";
         String updateTime = "Please select 'Remember me'";
         int[] allWidgetIds = intent
                 .getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);

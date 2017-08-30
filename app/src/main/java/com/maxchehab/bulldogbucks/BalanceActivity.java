@@ -26,6 +26,7 @@ import com.google.gson.JsonParser;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -337,27 +338,10 @@ public class BalanceActivity extends AppCompatActivity {
             }
         });
 
-        OkHttpClient client = new OkHttpClient();
-
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("pin", pin)
-                .addFormDataPart("userID",userID)
-                .build();
-
-        Request request = new Request.Builder()
-                .url("http://104.236.141.69/bulldogbucks/balance.php")
-                .method("POST", RequestBody.create(null, new byte[0]))
-                .post(requestBody)
-                .build();
-
-        final Gson gson = new Gson();
-
-
-        client.newCall(request).enqueue(new Callback() {
+        new GetUserData(new OnUserDataListener() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.d("Response", e.toString());
+            public void onFailure(String error) {
+                Log.d("Response", error);
 
                 runOnUiThread(new Runnable() {
                     @Override
@@ -370,84 +354,59 @@ public class BalanceActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(Call call, final Response response) throws IOException {
-                String data = response.body().string();
-                Log.d("Response", data );
-                try{
-                    JsonParser jp = new JsonParser(); //from gson
-                    JsonElement root = jp.parse(data); //Convert the input stream to a json element
-                    JsonObject rootobj = root.getAsJsonObject();
-                    if (rootobj.get("success").getAsBoolean()) {
-                        final String balance = rootobj.get("balance").getAsString();
-                        final boolean frozen = rootobj.get("frozen").getAsBoolean();
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                _balanceText.setText(balance);
-                                _balanceText.setBackgroundColor(getResources().getColor(R.color.white));
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                                params.setMargins(0, 0, 0, 0);
-                                _balanceText.setTextSize(24);
-                                _balanceText.setLayoutParams(params);
+            public void onSuccess(UserData userData) {
+                final DecimalFormat decimalFormat = new DecimalFormat("#.00");
+                final String balance = "$" + decimalFormat.format(userData.getBalance());
+                Log.d("BalanceActivity", "balance: " + userData.getBalance());
+                final boolean frozen = userData.getFrozen();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _balanceText.setText(balance);
+                        _balanceText.setBackgroundColor(getResources().getColor(R.color.white));
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        params.setMargins(0, 0, 0, 0);
+                        _balanceText.setTextSize(24);
+                        _balanceText.setLayoutParams(params);
 
-                                _balanceDesc.setBackgroundColor(getResources().getColor(R.color.white));
-                                _balanceDesc.setTextColor(getResources().getColor(R.color.primary));
+                        _balanceDesc.setBackgroundColor(getResources().getColor(R.color.white));
+                        _balanceDesc.setTextColor(getResources().getColor(R.color.primary));
 
-                                _freezeCardLoader.setVisibility(View.GONE);
-                                _freezeCardInfo.setVisibility(View.VISIBLE);
-                                _freezeCardText.setVisibility(View.VISIBLE);
-                                _freezeCard.setVisibility(View.VISIBLE);
+                        _freezeCardLoader.setVisibility(View.GONE);
+                        _freezeCardInfo.setVisibility(View.VISIBLE);
+                        _freezeCardText.setVisibility(View.VISIBLE);
+                        _freezeCard.setVisibility(View.VISIBLE);
 
-                                _logoLayout.setBackgroundColor(getResources().getColor(R.color.white));
-                                _logoutLayout.setBackgroundColor(getResources().getColor(R.color.white));
-                                _logoutIcon.setVisibility(View.VISIBLE);
-                                _logoutText.setVisibility(View.VISIBLE);
-                                _logoImage.setVisibility(View.VISIBLE);
+                        _logoLayout.setBackgroundColor(getResources().getColor(R.color.white));
+                        _logoutLayout.setBackgroundColor(getResources().getColor(R.color.white));
+                        _logoutIcon.setVisibility(View.VISIBLE);
+                        _logoutText.setVisibility(View.VISIBLE);
+                        _logoImage.setVisibility(View.VISIBLE);
 
-                                _freezeCard.setChecked(frozen);
-                                if(frozen){
-                                    _freezeCardText.setText("Unfreeze card");
-                                }else{
-                                    _freezeCardText.setText("Freeze card");
-                                }
+                        _freezeCard.setChecked(frozen);
+                        if (frozen) {
+                            _freezeCardText.setText("Unfreeze card");
+                        } else {
+                            _freezeCardText.setText("Freeze card");
+                        }
 
 
-                                DateFormat dfTime = new SimpleDateFormat("hh:mm a");
-                                String time = dfTime.format(Calendar.getInstance().getTime());
+                        DateFormat dfTime = new SimpleDateFormat("hh:mm a");
+                        String time = dfTime.format(Calendar.getInstance().getTime());
 
-                                SharedPreferences sharedPref = getSharedPreferences("data", MODE_APPEND);
-                                SharedPreferences.Editor editor = sharedPref.edit();
-                                editor.putString("balance", balance);
-                                editor.putString("updateTime", time);
-                                editor.commit();
-                                updateWidgets();
+                        SharedPreferences sharedPref = getSharedPreferences("data", MODE_APPEND);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString("balance", balance);
+                        editor.putString("updateTime", time);
+                        editor.commit();
+                        updateWidgets();
 
-                                loading = false;
-                                progressDialog.dismiss();
-                            }
-                        });
-                    }else{
-                        Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
+                        loading = false;
                         progressDialog.dismiss();
                     }
-                }catch(Exception e){
-                    if(retry){
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getBaseContext(), "Retrieving balance failed", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                        retry = false;
-                    }else{
-                        retry = true;
-                        updateBalance();
-                    }
-                }
-
+                });
             }
-        });
-
+        }).execute(new Credential(userID,pin));
         swipeContainer.setRefreshing(false);
     }
 }

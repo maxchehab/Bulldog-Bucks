@@ -2,37 +2,104 @@ package com.maxchehab.bulldogbucks;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by maxchehab on 8/28/17.
  */
 
-public class Login extends AsyncTask<Credential, Void, Boolean> {
+public class GetUserData extends AsyncTask<Credential, Void, Boolean> {
 
-    private static String TAG = "Login";
-    private HttpListener httpListener;
+    private static String TAG = "GetUserData";
+    private static String ssid;
+    private OnUserDataListener onUserDataListener;
 
-    public Login(HttpListener httpListener){
-        this.httpListener = httpListener;
+    public GetUserData(OnUserDataListener onUserDataListener){
+        this.onUserDataListener = onUserDataListener;
     }
 
     protected Boolean doInBackground(Credential... credentials){
         Credential credential = credentials[0];
-        String ssid = getSSID(credential);
-
-        Log.d(TAG,ssid);
+        ssid = getSSID(credential);
 
         if(ssid != null){
+            UserData userData = getUserData();
             logout(ssid);
-            httpListener.onSuccess();
+            onUserDataListener.onSuccess(userData);
             return true;
         }
-        httpListener.onFailure("SSID is null");
+        onUserDataListener.onFailure("SSID is null");
         return false;
+    }
+
+    private UserData getUserData(){
+        if(ssid == null){
+            return null;
+        }
+
+        UserData userData = new UserData();
+        try{
+            URL url = new URL("https://zagweb.gonzaga.edu/pls/gonz/hwgwcard.transactions");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("Cookie", "SESSID=" + ssid);
+
+            //Get new ssid
+            for (int i = 0;; i++) {
+                String headerName = connection.getHeaderFieldKey(i);
+                String headerValue = connection.getHeaderField(i);
+
+                if (headerName == null && headerValue == null) {
+                    break;
+                }
+                if ("Set-Cookie".equalsIgnoreCase(headerName)) {
+                    String[] fields = headerValue.split("=");
+                    Log.d(TAG, "full header: " + headerValue);
+                    if(fields[0].equals("SESSID")){
+                        ssid = fields[1];
+                    }
+                }
+            }
+
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader((connection.getInputStream())));
+            StringBuilder builder = new StringBuilder();
+            String aux = "";
+            while ((aux = reader.readLine()) != null) {
+                builder.append(aux);
+            }
+
+            String html = builder.toString();
+
+            String re1=".*?";
+            String re2="(\\$[0-9]+(?:\\.[0-9][0-9])?)(?![\\d])";
+
+            Pattern p = Pattern.compile(re1+re2,Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+            Matcher m = p.matcher(html);
+            if (m.find()){
+                userData.setBalance(Double.parseDouble(m.group(1).replace("$", "")));
+                Log.d(TAG, "balance : " + userData.getBalance());
+            }
+            userData.setFrozen(html.contains("Unfreeze my card now"));
+            Log.d(TAG, "frozen : " + userData.getFrozen());
+
+
+        }catch(MalformedURLException ex){
+            Log.d(TAG, ex.getMessage());
+        }catch(IOException ex){
+            Log.d(TAG, ex.getMessage());
+        }
+
+
+        return userData;
     }
 
     private void logout(String ssid){
@@ -44,7 +111,6 @@ public class Login extends AsyncTask<Credential, Void, Boolean> {
             if(connection.getResponseCode() >= HttpURLConnection.HTTP_BAD_REQUEST){
                 Log.d(TAG, "Logout Error!");
             }
-
         } catch(MalformedURLException ex){
             Log.d(TAG, ex.getMessage());
         } catch(IOException ex){

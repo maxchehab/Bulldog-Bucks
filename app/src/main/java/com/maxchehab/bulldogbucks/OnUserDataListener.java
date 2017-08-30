@@ -4,7 +4,7 @@ package com.maxchehab.bulldogbucks;
  * Created by maxchehab on 8/28/17.
  */
 
-public interface HttpListener {
+public interface OnUserDataListener {
     void onFailure(String error);
-    void onSuccess();
+    void onSuccess(UserData userData);
 }
