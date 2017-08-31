@@ -7,39 +7,34 @@ import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-import java.io.IOException;
+import org.w3c.dom.Text;
+
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class BalanceActivity extends AppCompatActivity {
 
@@ -69,6 +64,8 @@ public class BalanceActivity extends AppCompatActivity {
     @Bind(R.id.balanceText) TextView _balanceText;
     @Bind(R.id.balanceDesc) TextView _balanceDesc;
 
+    @Bind(R.id.transaction_parent) LinearLayout _transactionsParent;
+
 
     String verbage;
 
@@ -79,17 +76,14 @@ public class BalanceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_balance);
         ButterKnife.bind(this);
 
-
-
         pin = getIntent().getStringExtra("pin");
         userID = getIntent().getStringExtra("userID");
-
 
         progressDialog = new ProgressDialog(BalanceActivity.this, R.style.AppTheme_Dark_Dialog);
         freezeDialog = new ProgressDialog(BalanceActivity.this, R.style.AppTheme_Dark_Dialog);
 
 
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        /*swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -98,7 +92,7 @@ public class BalanceActivity extends AppCompatActivity {
                 updateBalance();
             }
         });
-        swipeContainer.setColorSchemeResources(R.color.primary);
+        swipeContainer.setColorSchemeResources(R.color.primary);*/
 
 
         _freezeCardInfo.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +100,7 @@ public class BalanceActivity extends AppCompatActivity {
             public void onClick(View v) {
                     new SimpleTooltip.Builder(v.getContext())
                             .anchorView(v)
-                            .text("If you cannot locate your ZAGCARD you can freeze it. This action will stop your ZAGCARD from working and protect all available Bulldog Bucks and Meal Plan swipes.")
+                            .text("If you cannot locate your Zagcard you can freeze it. This action will stop your Zagcard from working and protect all available Bulldog Bucks and Meal Plan swipes.")
                             .gravity(Gravity.BOTTOM)
                             .animated(false)
                             .transparentOverlay(false)
@@ -305,7 +299,7 @@ public class BalanceActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onSuccess(UserData userData) {
+            public void onSuccess(final UserData userData) {
                 final DecimalFormat decimalFormat = new DecimalFormat("#.00");
                 final String balance = "$" + decimalFormat.format(userData.getBalance());
                 Log.d("BalanceActivity", "balance: " + userData.getBalance());
@@ -342,6 +336,34 @@ public class BalanceActivity extends AppCompatActivity {
                         }
 
 
+                        _transactionsParent.removeAllViews();
+                        LayoutInflater inflater = (LayoutInflater)      getSystemService(LAYOUT_INFLATER_SERVICE);
+                        for (Transaction transaction : userData.getTransactions()) {
+                            View transactionView = inflater.inflate(R.layout.layout_transaction,null);
+                            TextView amount = (TextView)transactionView.findViewById(R.id.transactionAmount);
+                            TextView location = (TextView) transactionView.findViewById(R.id.transaction_location);
+                            ImageView up = (ImageView) transactionView.findViewById(R.id.up);
+                            ImageView down = (ImageView) transactionView.findViewById(R.id.down);
+
+                            amount.setText("$" + decimalFormat.format(transaction.getAmount()));
+                            location.setText(ellipsize(transaction.getLocation(),15));
+
+                            if(transaction.getType().equalsIgnoreCase("DEPOSIT")){
+                                amount.setTextColor(Color.parseColor("#719862"));
+                                up.setVisibility(View.VISIBLE);
+                            }else{
+                                amount.setTextColor(Color.parseColor("#b70101"));
+                                down.setVisibility(View.VISIBLE);
+                            }
+
+                            _transactionsParent.addView(transactionView);
+                        }
+
+
+
+
+
+
                         DateFormat dfTime = new SimpleDateFormat("hh:mm a");
                         String time = dfTime.format(Calendar.getInstance().getTime());
 
@@ -358,6 +380,40 @@ public class BalanceActivity extends AppCompatActivity {
                 });
             }
         }).execute(new Credential(userID,pin));
-        swipeContainer.setRefreshing(false);
+        //swipeContainer.setRefreshing(false);
+    }
+
+    private final static String NON_THIN = "[^iIl1\\.,']";
+
+    private static int textWidth(String str) {
+        return (int) (str.length() - str.replaceAll(NON_THIN, "").length() / 2);
+    }
+
+    public static String ellipsize(String text, int max) {
+
+        if (textWidth(text) <= max)
+            return text;
+
+        // Start by chopping off at the word before max
+        // This is an over-approximation due to thin-characters...
+        int end = text.lastIndexOf(' ', max - 3);
+
+        // Just one long word. Chop it off.
+        if (end == -1)
+            return text.substring(0, max-3) + "...";
+
+        // Step forward as long as textWidth allows.
+        int newEnd = end;
+        do {
+            end = newEnd;
+            newEnd = text.indexOf(' ', end + 1);
+
+            // No more spaces.
+            if (newEnd == -1)
+                newEnd = text.length();
+
+        } while (textWidth(text.substring(0, newEnd) + "...") < max);
+
+        return text.substring(0, end) + "...";
     }
 }

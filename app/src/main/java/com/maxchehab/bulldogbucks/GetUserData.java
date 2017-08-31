@@ -3,6 +3,11 @@ package com.maxchehab.bulldogbucks;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -78,6 +83,29 @@ public class GetUserData extends AsyncTask<Credential, Void, Boolean> {
             }
 
             String html = builder.toString();
+
+
+            Document doc = Jsoup.parse(html);
+            Elements tables = doc.select(".plaintable");
+
+            for (Element table : tables) {
+                if(table.html().contains("Transaction Date")){
+                    Elements rows = table.select("tr");
+                    rows.remove(0);
+                    rows.remove(rows.size() - 1);
+                    for (Element row : rows) {
+                        Elements properties = row.select(".pllabel");
+
+                        Transaction transaction = new Transaction(
+                                                                    properties.get(1).html(),
+                                                                    Double.parseDouble(properties.get(3).html().replaceAll("[^\\d.]", "")),
+                                                                    properties.get(6).html()
+                                                                );
+
+                        userData.addTransactions(transaction);
+                    }
+                }
+            }
 
             String re1=".*?";
             String re2="(\\$[0-9]+(?:\\.[0-9][0-9])?)(?![\\d])";
