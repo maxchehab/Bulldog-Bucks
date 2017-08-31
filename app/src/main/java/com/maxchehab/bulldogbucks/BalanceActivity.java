@@ -106,7 +106,7 @@ public class BalanceActivity extends AppCompatActivity {
             public void onClick(View v) {
                     new SimpleTooltip.Builder(v.getContext())
                             .anchorView(v)
-                            .text("If you cannot locate your ZAGCARD you can freeze it. This action will stop your ZAGCARD from working and protect all available Bulldog Bucks and Meal Plan swipes.")
+                            .text("If you cannot locate your Zagcard you can freeze it. This action will stop your Zagcard from working and protect all available Bulldog Bucks and Meal Plan swipes.")
                             .gravity(Gravity.BOTTOM)
                             .animated(false)
                             .transparentOverlay(false)
