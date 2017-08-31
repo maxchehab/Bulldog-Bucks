@@ -24,8 +24,6 @@ public class CheckLogin extends AsyncTask<Credential, Void, Boolean> {
         Credential credential = credentials[0];
         String ssid = getSSID(credential);
 
-        Log.d(TAG,ssid);
-
         if(ssid != null){
             logout(ssid);
             httpListener.onSuccess();

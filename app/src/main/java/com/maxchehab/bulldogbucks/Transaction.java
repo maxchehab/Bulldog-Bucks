@@ -25,6 +25,11 @@ public class Transaction {
         this.type = type;
     }
 
+    public Transaction(String location, double amount, String type){
+        this.location = location;
+        this.amount = amount;
+        this.type = type;
+    }
 
     public Date getDate(){
         return date;
