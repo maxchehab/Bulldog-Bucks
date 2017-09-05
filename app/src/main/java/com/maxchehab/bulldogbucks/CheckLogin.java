@@ -23,8 +23,7 @@ public class CheckLogin extends AsyncTask<Credential, Void, Boolean> {
     protected Boolean doInBackground(Credential... credentials){
         Credential credential = credentials[0];
         String ssid = getSSID(credential);
-
-        if(ssid != null){
+        if(ssid != null && !ssid.contains("expires")){
             logout(ssid);
             httpListener.onSuccess();
             return true;

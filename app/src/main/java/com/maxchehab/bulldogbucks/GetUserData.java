@@ -107,6 +107,9 @@ public class GetUserData extends AsyncTask<Credential, Void, Boolean> {
                 }
             }
 
+
+
+
             String re1=".*?";
             String re2="(\\$[0-9]+(?:\\.[0-9][0-9])?)(?![\\d])";
 
