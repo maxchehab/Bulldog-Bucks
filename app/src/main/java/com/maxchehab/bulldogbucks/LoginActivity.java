@@ -3,7 +3,10 @@ package com.maxchehab.bulldogbucks;
 import android.app.ProgressDialog;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -36,12 +39,30 @@ public class LoginActivity extends AppCompatActivity {
 
 
         SharedPreferences sharedPref = getSharedPreferences("data", MODE_PRIVATE);
-        if(sharedPref.contains("pin") && sharedPref.contains("userID")){
-            String pin = sharedPref.getString("pin", null);
-            String userID = sharedPref.getString("userID", null);
 
-            loginRequest(userID,pin);
+        ConnectivityManager cm = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnected();
+
+        if(isConnected){
+            if(sharedPref.contains("pin") && sharedPref.contains("userID")){
+                String pin = sharedPref.getString("pin", null);
+                String userID = sharedPref.getString("userID", null);
+
+                loginRequest(userID,pin);
+            }
+        }else{
+            Toast.makeText(getBaseContext(), "No internet connection.", Toast.LENGTH_LONG).show();
+            if(sharedPref.contains("pin") && sharedPref.contains("userID")){
+                String pin = sharedPref.getString("pin", null);
+                String userID = sharedPref.getString("userID", null);
+
+                _pinText.setText(pin);
+                _userIdtext.setText(userID);
+            }
         }
+
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -152,7 +173,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "CheckLogin failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Authentication failed", Toast.LENGTH_LONG).show();
 
         _loginButton.setEnabled(true);
     }
