@@ -32,35 +32,23 @@
             card_view:cardBackgroundColor="@color/white"
             card_view:cardCornerRadius="5dp">
 
-
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|left"
+                android:layout_height="match_parent"
                 android:layout_margin="15dp"
+                android:gravity="center_vertical"
                 android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/logoLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/loader">
-
-                    <ImageView
-                        android:id="@+id/logoImage"
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:src="@drawable/ic_logo"
-                        android:visibility="invisible" />
-                </LinearLayout>
-
+                <ImageView
+                    android:id="@+id/logoImage"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/ic_logo"
+                    android:visibility="visible"/>
                 <LinearLayout
                     android:id="@+id/logoutLayout"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="right|bottom|center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:background="@color/loader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -68,22 +56,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:layout_marginTop="-2dp"
+                        android:layout_marginTop="4dp"
                         android:src="@drawable/ic_logout"
-                        android:tint="@color/primary"
-                        android:visibility="invisible" />
+                        android:tint="@color/primary"/>
 
 
                     <TextView
                         android:id="@+id/logoutText"
+                        android:gravity="center_vertical"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_height="match_parent"
                         android:text="Logout"
-                        android:textColor="@color/primary"
-                        android:visibility="invisible" />
+                        android:textColor="@color/primary" />
                 </LinearLayout>
+
+
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -102,10 +91,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|left"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="0dp"
                         android:width="90dp"
-                        android:background="@color/loader"
-                        android:text=""
+                        android:text="$435.12"
                         android:textColor="@color/primary"
                         android:textSize="24dp" />
 
@@ -113,27 +101,35 @@
                         android:id="@+id/balanceDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/loader"
                         android:text="Bulldog Bucks Balance"
-                        android:textColor="@color/loader"
+                        android:textColor="@color/primary"
+                        android:layout_marginBottom="10dp"
+
                         android:textSize="15dp" />
 
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/mealPlan"
+                    android:background="@drawable/rounded_corner"                        android:layout_width="wrap_content"
+                    android:backgroundTint="@color/orange"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginBottom="10dp"
+                    android:paddingLeft="3dp"
+                    android:paddingBottom="1dp"
+                    android:paddingTop="1dp"
+                    android:paddingRight="3dp"
+                    android:text="8 available meal swipes"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
                 <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="right|bottom"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/freezeCardLoader"
-                        android:layout_width="151dp"
-
-                        android:layout_height="wrap_content"
-                        android:background="@color/loader" />
 
                     <ImageView
                         android:id="@+id/freezeCardInfo"
@@ -144,28 +140,31 @@
                         android:scaleY="1.2"
                         android:src="@drawable/ic_info"
                         android:tint="@color/primary"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
 
                     <TextView
                         android:id="@+id/freezeCardText"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginRight="10dp"
                         android:text="Freeze Card"
+                        android:gravity="center_vertical"
                         android:textColor="@color/primary"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                     <Switch
                         android:id="@+id/freezeCard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:thumbTint="@color/accent"
                         android:trackTint="@color/primary"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                 </LinearLayout>
+
+
+
 
 
             </LinearLayout>
@@ -184,63 +183,63 @@
             card_view:cardBackgroundColor="@color/white"
             card_view:cardCornerRadius="5dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/iron" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
 
-                    <View
-                        android:id="@+id/view"
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dip"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerVertical="true"
-                        android:background="@color/iron" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Recent Transactions: "
+                        android:textColor="@color/primary"
+                        android:textSize="25dp" />
 
+                </LinearLayout>
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Recent Transactions: "
-                            android:textColor="@color/primary"
-                            android:textSize="25dp" />
-
-                    </LinearLayout>
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
                         <LinearLayout
                             android:id="@+id/transaction_parent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"></LinearLayout>
 
-                            <View
-                                android:layout_width="fill_parent"
-                                android:layout_height="1dip"
-                                android:layout_alignParentTop="true"
-                                android:layout_centerVertical="true"
-                                android:background="@color/iron" />
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerVertical="true"
+                            android:background="@color/iron" />
 
-                        </LinearLayout>
+                    </LinearLayout>
 
-                    </ScrollView>
+                </ScrollView>
 
 
 
-                </LinearLayout>
+            </LinearLayout>
 
 
         </android.support.v7.widget.CardView>

@@ -4,7 +4,9 @@
   <color name="primary_dark">#003E76</color>
   <color name="primary_darker">#003E76</color>
   <color name="accent">#003E76</color>
-  <color name="green">#719862</color>
+  <color name="green">#5fba7d</color>
+  <color name="orange">#ecae28</color>
+  <color name="gold">#e1c94c</color>
   <color name="red">#b70101</color>
 
   <color name="black">#000000</color>

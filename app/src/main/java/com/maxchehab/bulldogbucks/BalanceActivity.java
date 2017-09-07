@@ -49,10 +49,8 @@ public class BalanceActivity extends AppCompatActivity {
 
     @Bind(R.id.freezeCardInfo) ImageView _freezeCardInfo;
     @Bind(R.id.freezeCardText) TextView _freezeCardText;
-    @Bind(R.id.freezeCardLoader) TextView _freezeCardLoader;
     @Bind(R.id.freezeCard) Switch _freezeCard;
 
-    @Bind(R.id.logoLayout) LinearLayout _logoLayout;
     @Bind(R.id.logoImage) ImageView _logoImage;
 
 
@@ -308,25 +306,6 @@ public class BalanceActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         _balanceText.setText(balance);
-                        _balanceText.setBackgroundColor(getResources().getColor(R.color.white));
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                        params.setMargins(0, 0, 0, 0);
-                        _balanceText.setTextSize(24);
-                        _balanceText.setLayoutParams(params);
-
-                        _balanceDesc.setBackgroundColor(getResources().getColor(R.color.white));
-                        _balanceDesc.setTextColor(getResources().getColor(R.color.primary));
-
-                        _freezeCardLoader.setVisibility(View.GONE);
-                        _freezeCardInfo.setVisibility(View.VISIBLE);
-                        _freezeCardText.setVisibility(View.VISIBLE);
-                        _freezeCard.setVisibility(View.VISIBLE);
-
-                        _logoLayout.setBackgroundColor(getResources().getColor(R.color.white));
-                        _logoutLayout.setBackgroundColor(getResources().getColor(R.color.white));
-                        _logoutIcon.setVisibility(View.VISIBLE);
-                        _logoutText.setVisibility(View.VISIBLE);
-                        _logoImage.setVisibility(View.VISIBLE);
 
                         _freezeCard.setChecked(frozen);
                         if (frozen) {
@@ -391,6 +370,9 @@ public class BalanceActivity extends AppCompatActivity {
 
     public static String ellipsize(String text, int max) {
        if(text.length() > 15){
+           if(text.charAt(14) == ' '){
+               return text.substring(0,14) + "...";
+           }
            return text.substring(0,15) + "...";
        }
        return text;
