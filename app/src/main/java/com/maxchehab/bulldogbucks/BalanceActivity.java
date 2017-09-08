@@ -356,7 +356,7 @@ public class BalanceActivity extends AppCompatActivity {
                             location.setText(ellipsize(transaction.getLocation(),15));
 
                             if(transaction.getType().equalsIgnoreCase("DEPOSIT")){
-                                amount.setTextColor(Color.parseColor("#719862"));
+                                amount.setTextColor(Color.parseColor("#5fba7d"));
                                 up.setVisibility(View.VISIBLE);
                             }else{
                                 amount.setTextColor(Color.parseColor("#b70101"));
