@@ -10,6 +10,8 @@ import java.util.List;
 public class UserData {
     private boolean frozen;
     private double balance;
+    private String swipes;
+    private String swipeType;
     private List<Transaction> transactions = new ArrayList<>();
 
     public UserData(boolean frozen, double balance){
@@ -27,6 +29,14 @@ public class UserData {
         balance = value;
     }
 
+    public void setSwipes(String value){
+        swipes = value;
+    }
+
+    public void setSwipeType(String value){
+        swipeType = value;
+    }
+
     public void addTransactions(Transaction transaction){
         this.transactions.add(transaction);
     }
@@ -37,6 +47,14 @@ public class UserData {
 
     public double getBalance(){
         return balance;
+    }
+
+    public String getSwipes(){
+        return swipes;
+    }
+
+    public String getSwipeType(){
+        return swipeType;
     }
 
     public List<Transaction> getTransactions(){

@@ -65,6 +65,8 @@ public class BalanceActivity extends AppCompatActivity {
     @Bind(R.id.balanceText) TextView _balanceText;
     @Bind(R.id.balanceDesc) TextView _balanceDesc;
 
+    @Bind(R.id.mealPlan) TextView _mealPlan;
+
     @Bind(R.id.transaction_parent) LinearLayout _transactionsParent;
 
 
@@ -101,7 +103,7 @@ public class BalanceActivity extends AppCompatActivity {
             public void onClick(View v) {
                     new SimpleTooltip.Builder(v.getContext())
                             .anchorView(v)
-                            .text("If you cannot locate your Zagcard you can freeze it. This action will stop your Zagcard from working and protect all available Bulldog Bucks and Meal Plan swipes.")
+                            .text("If you cannot locate your Zagcard you can freeze it. This action will protect all available Bulldog Bucks and Meal Plan swipes.")
                             .gravity(Gravity.BOTTOM)
                             .animated(false)
                             .transparentOverlay(false)
@@ -143,7 +145,6 @@ public class BalanceActivity extends AppCompatActivity {
 
             }
         });
-
 
         updateBalance();
     }
@@ -326,6 +327,20 @@ public class BalanceActivity extends AppCompatActivity {
                         } else {
                             _freezeCardText.setText("Freeze card");
                         }
+
+                        if(userData.getSwipeType().contains("Platinum")){
+                            _mealPlan.setText("Unlimited meal swipes");
+                          //  _mealPlan.setHighlightColor();
+                        }else if(userData.getSwipeType().contains("Gold")){
+                            _mealPlan.setText("16 swipes per week");
+                        }else if(userData.getSwipeType().contains("Silver")){
+                            _mealPlan.setText("12 swipes per week");
+                        }else if(userData.getSwipeType().contains("Blue")){
+                            _mealPlan.setText(userData.getSwipes() + " available meal swipes");
+                        }else if(userData.getSwipeType().contains("White")){
+                            _mealPlan.setText(userData.getSwipes() + " available meal swipes");
+                        }
+
 
 
                         _transactionsParent.removeAllViews();

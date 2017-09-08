@@ -18,6 +18,8 @@ import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static android.webkit.ConsoleMessage.MessageLevel.LOG;
+
 /**
  * Created by maxchehab on 8/28/17.
  */
@@ -84,8 +86,31 @@ public class GetUserData extends AsyncTask<Credential, Void, Boolean> {
 
             String html = builder.toString();
 
+            /*int index = 0;
+            while (index < html.length()) {
+                Log.d(TAG,html.substring(index, Math.min(index + 1000,html.length())));
+                index += 1000;
+            }*/
+
 
             Document doc = Jsoup.parse(html);
+
+            Elements tableRows = doc.select("tr");
+            for(Element tableRow : tableRows){
+                if(tableRow.html().contains("Semester Remaining")){
+                    String mealSwipes = tableRow.select("td").get(1).html();
+                    userData.setSwipes(mealSwipes);
+                }
+                if(tableRow.html().contains("Meal Plan</td>")){
+                    Log.d(TAG, tableRow.html());
+                    String swipeType = tableRow.select("td").get(1).html();
+                    userData.setSwipeType(swipeType);
+                }
+            }
+            Log.d(TAG, userData.getSwipeType() + " : " + userData.getSwipes());
+
+
+
             Elements tables = doc.select(".plaintable");
 
             for (Element table : tables) {
