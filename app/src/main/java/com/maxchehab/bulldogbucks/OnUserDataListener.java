@@ -1,5 +1,7 @@
 package com.maxchehab.bulldogbucks;
 
+import android.content.Context;
+
 /**
  * Created by maxchehab on 8/28/17.
  */

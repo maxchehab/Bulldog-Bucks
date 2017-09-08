@@ -26,7 +26,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import org.w3c.dom.Text;
 
 import java.text.DateFormat;
@@ -145,6 +144,7 @@ public class BalanceActivity extends AppCompatActivity {
 
             }
         });
+
 
         updateBalance();
     }

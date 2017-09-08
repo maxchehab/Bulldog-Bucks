@@ -19,7 +19,6 @@
         android:gravity="center_vertical"
         android:orientation="vertical">
 
-
         <android.support.v7.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="match_parent"
@@ -59,10 +58,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="0dp"
                             android:width="90dp"
-                            android:text="$435.12"
+                            android:text="$0.00"
                             android:textColor="@color/primary"
                             android:textSize="24dp" />
-
                         <TextView
                             android:id="@+id/balanceDesc"
                             android:layout_width="wrap_content"
@@ -70,7 +68,7 @@
                             android:text="Bulldog Bucks Balance"
                             android:textColor="@color/primary"
                             android:layout_marginBottom="5dp"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"/>
                         <TextView
                             android:id="@+id/mealPlan"
                             android:background="@drawable/rounded_corner"                        android:layout_width="wrap_content"
@@ -79,11 +77,9 @@
                             android:layout_gravity="center|left"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:text="Unlimited meal swipes"
+                            android:text="meal swipes"
                             android:textColor="@color/white"
                             android:textSize="15dp" />
-
-
                     </LinearLayout>
                 </RelativeLayout >
                 <LinearLayout
@@ -126,6 +122,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/freezeCardLayout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -163,11 +160,7 @@
 
                         </LinearLayout>
 
-
-
                     </RelativeLayout>
-
-
 
                 </LinearLayout>
             </LinearLayout>
