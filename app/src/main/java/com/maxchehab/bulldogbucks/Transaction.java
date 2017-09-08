@@ -66,11 +66,10 @@ public class Transaction {
     }
 
     public void setLocation(String location){
-        Log.d("Transaction", location.substring(0,6));
 
-        if(location.substring(0,6).equals("BbOne ")){
+        if(location.length() > 6 && location.substring(0,6).equals("BbOne ")){
             location = location.substring(6);
-        }else if (location.substring(0,3).equals("UD ")){
+        }else if (location.length() > 3 && location.substring(0,3).equals("UD ")){
             location = location.substring(3);
         }
 

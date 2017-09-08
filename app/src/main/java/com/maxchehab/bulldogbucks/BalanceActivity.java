@@ -292,6 +292,7 @@ public class BalanceActivity extends AppCompatActivity {
                 progressDialog.setIndeterminate(true);
                 progressDialog.setMessage("Retrieving account information....");
                 progressDialog.show();
+
             }
         });
 
