@@ -329,7 +329,9 @@ public class BalanceActivity extends AppCompatActivity {
                             _freezeCardText.setText("Freeze card");
                         }
 
-                        if(userData.getSwipeType().contains("Platinum")){
+                        if(userData.getSwipeType() == null){
+                            _mealPlan.setText("Community meal plan");
+                        }else if(userData.getSwipeType().contains("Platinum")){
                             _mealPlan.setText("Unlimited meal swipes");
                           //  _mealPlan.setHighlightColor();
                         }else if(userData.getSwipeType().contains("Gold")){
@@ -341,8 +343,6 @@ public class BalanceActivity extends AppCompatActivity {
                         }else if(userData.getSwipeType().contains("White")){
                             _mealPlan.setText(userData.getSwipes() + " available meal swipes");
                         }
-
-
 
                         _transactionsParent.removeAllViews();
                         LayoutInflater inflater = (LayoutInflater)      getSystemService(LAYOUT_INFLATER_SERVICE);
