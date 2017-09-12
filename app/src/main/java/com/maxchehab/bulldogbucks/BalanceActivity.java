@@ -53,6 +53,8 @@ public class BalanceActivity extends AppCompatActivity {
     @Bind(R.id.freezeCardText) TextView _freezeCardText;
     @Bind(R.id.freezeCard) Switch _freezeCard;
 
+    @Bind(R.id.zagshelpzags) TextView _zagsHelpZags;
+
     @Bind(R.id.logoImage) ImageView _logoImage;
 
 
@@ -67,7 +69,6 @@ public class BalanceActivity extends AppCompatActivity {
     @Bind(R.id.mealPlan) TextView _mealPlan;
 
     @Bind(R.id.transaction_parent) LinearLayout _transactionsParent;
-
 
     String verbage;
 
@@ -109,6 +110,14 @@ public class BalanceActivity extends AppCompatActivity {
                             .build()
                             .show();
 
+            }
+        });
+
+        _zagsHelpZags.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), ZagsHelpZags.class);
+                startActivity(intent);
             }
         });
 
