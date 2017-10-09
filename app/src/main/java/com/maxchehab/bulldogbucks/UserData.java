@@ -17,6 +17,7 @@ public class UserData {
     public UserData(boolean frozen, double balance){
         this.frozen = frozen;
         this.balance = balance;
+        this.swipeType = "N/A";
     }
 
     public UserData(){}

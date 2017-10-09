@@ -58,8 +58,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="0dp"
-                            android:width="90dp"
-                            android:text="$435.12"
+                            android:width="140dp"
+                            android:text="$435.11"
                             android:textColor="@color/primary"
                             android:textSize="24dp" />
 
