@@ -314,6 +314,7 @@ public class BalanceActivity extends AppCompatActivity {
             @Override
             public void onSuccess(final UserData userData) {
                 final DecimalFormat decimalFormat = new DecimalFormat("#.00");
+                Log.d("BalanceAct","Fun " + userData.getBalance());
                 final String balance = "$" + decimalFormat.format(userData.getBalance());
                 Log.d("BalanceActivity", "balance: " + userData.getBalance());
                 final boolean frozen = userData.getFrozen();
@@ -329,6 +330,8 @@ public class BalanceActivity extends AppCompatActivity {
                             _freezeCardText.setText("Freeze card");
                         }
 
+                        Log.d("balance, check"," " + userData.getBalance());
+                        Log.d("print swipe type", " " + userData.getSwipes());
                         if(userData.getSwipeType().contains("Platinum")){
                             _mealPlan.setText("Unlimited meal swipes");
                           //  _mealPlan.setHighlightColor();
@@ -340,8 +343,10 @@ public class BalanceActivity extends AppCompatActivity {
                             _mealPlan.setText(userData.getSwipes() + " available meal swipes");
                         }else if(userData.getSwipeType().contains("White")){
                             _mealPlan.setText(userData.getSwipes() + " available meal swipes");
+                        }else if(userData.getSwipeType().contains("N/A")){
+                            //the app crashed if there was no meal plan.
+                            _mealPlan.setText("No meal plan");
                         }
-
 
 
                         _transactionsParent.removeAllViews();

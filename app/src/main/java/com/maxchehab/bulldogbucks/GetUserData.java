@@ -59,7 +59,7 @@ public class GetUserData extends AsyncTask<Credential, Void, Boolean> {
             URL url = new URL("https://zagweb.gonzaga.edu/pls/gonz/hwgwcard.transactions");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("Cookie", "SESSID=" + ssid);
-
+            Log.d("Debug Money issue", ssid);
             //Get new ssid
             for (int i = 0;; i++) {
                 String headerName = connection.getHeaderFieldKey(i);
@@ -108,7 +108,11 @@ public class GetUserData extends AsyncTask<Credential, Void, Boolean> {
                     userData.setSwipeType(swipeType);
                 }
             }
-            Log.d(TAG, userData.getSwipeType() + " : " + userData.getSwipes());
+
+            if(userData.getSwipeType() == null){
+                userData.setSwipeType("N/A");
+            }
+            Log.d(TAG + "ho", userData.getSwipeType() + " : " + userData.getSwipes());
 
 
 
@@ -135,16 +139,24 @@ public class GetUserData extends AsyncTask<Credential, Void, Boolean> {
 
 
 
-
+            String test = " Bringing help: $1,662.36";
             String re1=".*?";
-            String re2="(\\$[0-9]+(?:\\.[0-9][0-9])?)(?![\\d])";
+            //old regex
+            //String re2="(\\$[0-9]+(?:\\.[0-9][0-9])?)(?![\\d])";
 
-            Pattern p = Pattern.compile(re1+re2,Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+            //new regex with the comma inserted
+            String re3="(\\$[0-9,]+(?:\\.[0-9][0-9])?)(?![\\d])";
+            Pattern p = Pattern.compile(re1+ re3,Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
             Matcher m = p.matcher(html);
             if (m.find()){
-                userData.setBalance(Double.parseDouble(m.group(1).replace("$", "")));
+                String parsedInt = m.group(1).replace("$", "");
+                parsedInt = parsedInt.replace(",","");
+                Log.d("Balance: ","" + parsedInt);
+                userData.setBalance(Double.parseDouble(parsedInt));
+
                 Log.d(TAG, "balance : " + userData.getBalance());
             }
+
             userData.setFrozen(html.contains("Unfreeze my card now"));
             Log.d(TAG, "frozen : " + userData.getFrozen());
 
