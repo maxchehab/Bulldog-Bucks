@@ -344,7 +344,7 @@ public class BalanceActivity extends AppCompatActivity {
                         }else if(userData.getSwipeType().contains("White")){
                             _mealPlan.setText(userData.getSwipes() + " available meal swipes");
                         }else if(userData.getSwipeType().contains("N/A")){
-                            //the app crashed if there was no mean plan.
+                            //the app crashed if there was no meal plan.
                             _mealPlan.setText("No meal plan");
                         }
 

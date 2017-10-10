@@ -107,12 +107,12 @@ public class GetUserData extends AsyncTask<Credential, Void, Boolean> {
                     String swipeType = tableRow.select("td").get(1).html();
                     userData.setSwipeType(swipeType);
                 }
-                else{
-                    //When someone did not have a meal plan it crashed the app. So, I set the N/A here
-                    userData.setSwipeType("N/A");
-                }
             }
-            Log.d(TAG, userData.getSwipeType() + " : " + userData.getSwipes());
+
+            if(userData.getSwipeType() == null){
+                userData.setSwipeType("N/A");
+            }
+            Log.d(TAG + "ho", userData.getSwipeType() + " : " + userData.getSwipes());
 
 
 
