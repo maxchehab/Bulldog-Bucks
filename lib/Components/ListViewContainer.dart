@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'ListData.dart';
-import 'Calender.dart';
-import '../Screens/Home/styles.dart';
+import 'TimeRow.dart';
+import 'TransactionRow.dart';
+import 'Transaction.dart';
 
 class ListViewContent extends StatelessWidget {
   final Animation<double> listTileWidth;
@@ -12,71 +12,64 @@ class ListViewContent extends StatelessWidget {
     this.listSlidePosition,
     this.listTileWidth,
   });
+
+  bool isSameDay(DateTime t1, DateTime t2) {
+    return (t1.day == t2.day && t1.month == t2.month && t1.year == t2.year);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return (new Stack(
-      alignment: listSlideAnimation.value,
-      children: <Widget>[
-        // new Calender(
-        //     margin: listSlidePosition.value * 6.5,
-        //     startTime: new DateTime.now().subtract(new Duration(days: 1))),
-        new ListData(
-            margin: listSlidePosition.value * 5.5,
+    List<Widget> children = [];
+
+    List<Transaction> transactions = [
+      new Transaction(
+          TransactionType.Sale, 12.0, "Aloha Island Grill", new DateTime.now()),
+      new Transaction(TransactionType.Sale, 12.0,
+          "Bruchi's CheaseStakes & Subs", new DateTime.now()),
+      new Transaction(TransactionType.Sale, 12.0, "Carls Jr",
+          new DateTime.now().subtract(new Duration(days: 1))),
+      new Transaction(TransactionType.Sale, 12.0, "Caruso's",
+          new DateTime.now().subtract(new Duration(days: 2))),
+      new Transaction(TransactionType.Sale, 12.0, "Clarks Fork",
+          new DateTime.now().subtract(new Duration(days: 4))),
+      new Transaction(TransactionType.Sale, 12.0, "Domino's Pizza",
+          new DateTime.now().subtract(new Duration(days: 4))),
+    ];
+
+    transactions.sort((a, b) => b.time.compareTo(a.time));
+
+    double margin = 0.5;
+    for (int i = transactions.length - 1; i >= 0; i--) {
+      Transaction transaction = transactions[i];
+
+      if (i < transactions.length - 2 &&
+          !isSameDay(transactions[i + 1].time, transaction.time)) {
+        children.add(new TimeRow(
             width: listTileWidth.value,
-            type: "Sale",
-            title: "\$12.00",
-            subtitle: "Aloha Island Grill",
-            image: alohaIslandGrillImage),
-        new ListData(
-            margin: listSlidePosition.value * 4.5,
+            margin: listSlidePosition.value * (++margin),
+            time: transaction.time));
+
+        margin += 0.25;
+
+        children.add(new TransactionRow(
             width: listTileWidth.value,
-            type: "Sale",
-            title: "\$4.00",
-            subtitle: "Bruchi's CheaseStakes & Subs",
-            image: bruchisImage),
-        new ListData(
-            margin: listSlidePosition.value * 3.5,
+            margin: listSlidePosition.value * margin,
+            transaction: transaction));
+      } else {
+        children.add(new TransactionRow(
             width: listTileWidth.value,
-            type: "Sale",
-            title: "\$10.40",
-            subtitle: "Carls Jr",
-            image: carlsJrImage),
-        new ListData(
-            margin: listSlidePosition.value * 2.5,
+            margin: listSlidePosition.value * (++margin),
+            transaction: transaction));
+      }
+
+      if (i == 0) {
+        children.add(new TimeRow(
             width: listTileWidth.value,
-            type: "Sale",
-            title: "\$4.10",
-            subtitle: "Caruso's",
-            image: carusosImage),
-        new ListData(
-            margin: listSlidePosition.value * 1.5,
-            width: listTileWidth.value,
-            type: "Sale",
-            title: "\$23.20",
-            subtitle: "Clarks Fork",
-            image: clarksForkImage),
-        new ListData(
-            margin: listSlidePosition.value * 0.5,
-            width: listTileWidth.value,
-            type: "Sale",
-            title: "\$21.98",
-            subtitle: "Domino's Pizza",
-            image: dominosImage),
-      ],
-    ));
+            margin: listSlidePosition.value * (++margin),
+            time: transaction.time));
+      }
+    }
+
+    return (new Stack(alignment: listSlideAnimation.value, children: children));
   }
 }
-
-//For large set of data
-
-// DataListBuilder dataListBuilder = new DataListBuilder();
-// var i = dataListBuilder.rowItemList.length + 0.5;
-// children: dataListBuilder.rowItemList.map((RowBoxData rowBoxData) {
-//   return new ListData(
-//     title: rowBoxData.title,
-//     subtitle: rowBoxData.subtitle,
-//     image: rowBoxData.image,
-//     width: listTileWidth.value,
-//     margin: listSlidePosition.value * (--i).toDouble(),
-//   );
-// }).toList(),

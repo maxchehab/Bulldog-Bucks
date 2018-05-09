@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../Components/Location.dart';
 
 DecorationImage backgroundImage = new DecorationImage(
   image: new ExactAssetImage('assets/home.jpeg'),
@@ -10,132 +11,33 @@ DecorationImage logoImage = new DecorationImage(
   fit: BoxFit.cover,
 );
 
-DecorationImage alohaIslandGrillImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/aloha-island-grill-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage bruchisImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/bruchis-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage carlsJrImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/carls-jr-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage carusosImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/carusos-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage clarksForkImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/clarks-fork-logo.jpg'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage dominosImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/dominos-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage dutchBrosCoffeeImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/dutch-bros-coffee-logo.jpg'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage frozaImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/forza-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage froyoEarthImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/froyo-earth-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage jimmyJohnsImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/jimmy-johns-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage kalicoKitchenImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/kalico-kitchen-logo.jpg'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage mcdonaldsImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/mcdonalds-logo.jpeg'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage methodJuiceImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/method-juice-logo.jpeg'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage modPizzaImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/mod-pizza-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage papaJohnsImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/papa-johns-logo.jpeg'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage pitaPitImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/pita-pit-logo.jpeg'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage qdobaImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/qdoba-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage sonicImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/sonic-logo.jpg'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage starbucksImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/starbucks-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage sushiSakaiImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/sushi-sakai-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage sweetoBurritoImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/sweeto-burrito-logo.jpg'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage thomasHammerImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/thomas-hammer-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage ultimageBagelImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/ultimate-bagel-logo.jpeg'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage urmImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/urm-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage wendysImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/wendys-logo.png'),
-  fit: BoxFit.fitWidth,
-);
-
-DecorationImage zagShopImage = new DecorationImage(
-  image: new ExactAssetImage('assets/logos/zag-shop-logo.jpg'),
-  fit: BoxFit.fitWidth,
-);
+List<Location> locations = [
+  new Location(
+      ["aloha", "island", "grill"], "assets/logos/aloha-island-grill-logo.png"),
+  new Location(["bruchis"], "assets/logos/bruchis-logo.png"),
+  new Location(["carls", "jr"], "assets/logos/carls-jr-logo.png"),
+  new Location(["carusos"], "assets/logos/carusos-logo.png"),
+  new Location(["clarks", "fork"], "assets/logos/clarks-fork-logo.jpg"),
+  new Location(["dominos"], "assets/logos/dominos-logo.png"),
+  new Location(
+      ["dutch", "bros", "coffee"], "assets/logos/dutch-bros-coffee-logo.jpg"),
+  new Location(["forza"], "assets/logos/forza-logo.png"),
+  new Location(["froyo", "earth"], "assets/logos/froyo-earth-logo.png"),
+  new Location(["jimmy"], "assets/logos/jimmy-johns-logo.png"),
+  new Location(["kalico", "kitchen"], "assets/logos/kalico-kitchen-logo.jpg"),
+  new Location(["mcdonalds"], "assets/logos/mcdonalds-logo.jpeg"),
+  new Location(["method", "juice"], "assets/logos/method-juice-logo.jpeg"),
+  new Location(["mod", "pizza"], "assets/logos/mod-pizza-logo.png"),
+  new Location(["papa"], "assets/logos/papa-johns-logo.jpeg"),
+  new Location(["pita", "pit"], "assets/logos/pita-pit-logo.jpeg"),
+  new Location(["qdoba"], "assets/logos/qdoba-logo.png"),
+  new Location(["sonic"], "assets/logos/sonic-logo.jpg"),
+  new Location(["starbucks"], "assets/logos/starbucks-logo.png"),
+  new Location(["sushi", "sakai"], "assets/logos/sushi-sakai-logo.png"),
+  new Location(["sweeto", "burrito"], "assets/logos/sweeto-burrito-logo.jpg"),
+  new Location(["thomas", "hammer"], "assets/logos/thomas-hammer-logo.png"),
+  new Location(["ultimate", "bagel"], "assets/logos/ultimate-bagel-logo.jpeg"),
+  new Location(["urm"], "assets/logos/urm-logo.png"),
+  new Location(["wendys"], "assets/logos/wendys-logo.png"),
+  new Location(["zag", "shop"], "assets/logos/zag-shop-logo.jpg"),
+];

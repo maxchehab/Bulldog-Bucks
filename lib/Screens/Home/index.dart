@@ -5,7 +5,7 @@ import 'package:flutter/animation.dart';
 import 'dart:async';
 import '../../Components/ListViewContainer.dart';
 import '../../Components/BalanceHeader.dart';
-import '../../Components/FadeContainer.dart';
+import '../../Components/FadeBox.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
 class HomeScreen extends StatefulWidget {

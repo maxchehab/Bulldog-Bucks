@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import '../Screens/Home/styles.dart';
 
-class ListData extends StatelessWidget {
+import 'Transaction.dart';
+
+class TransactionRow extends StatelessWidget {
   final EdgeInsets margin;
   final double width;
-  final String type;
-  final String title;
-  final String subtitle;
-  final DecorationImage image;
-  ListData(
-      {this.margin,
-      this.type,
-      this.subtitle,
-      this.title,
-      this.width,
-      this.image});
+  final Transaction transaction;
+
+  TransactionRow({
+    this.width,
+    this.margin,
+    this.transaction,
+  });
+
   @override
   Widget build(BuildContext context) {
     return (new Container(
@@ -36,24 +36,24 @@ class ListData extends StatelessWidget {
                   left: 20.0, top: 10.0, bottom: 10.0, right: 20.0),
               width: 60.0,
               height: 60.0,
-              decoration:
-                  new BoxDecoration(shape: BoxShape.circle, image: image)),
+              decoration: new BoxDecoration(
+                  shape: BoxShape.circle, image: transaction.location.image)),
           new Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               new Text(
-                title,
+                "\$" + transaction.amount.toStringAsFixed(2),
                 style: new TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.w400,
-                    color: (this.type == "Sale"
+                    color: (transaction.type == TransactionType.Sale
                         ? Colors.redAccent
                         : Colors.greenAccent)),
               ),
               new Padding(
                 padding: new EdgeInsets.only(top: 5.0),
                 child: new Text(
-                  subtitle,
+                  transaction.name,
                   style: new TextStyle(
                       color: Colors.grey,
                       fontSize: 14.0,
