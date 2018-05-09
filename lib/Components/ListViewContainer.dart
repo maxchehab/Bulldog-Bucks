@@ -13,10 +13,6 @@ class ListViewContent extends StatelessWidget {
     this.listTileWidth,
   });
 
-  bool isSameDay(DateTime t1, DateTime t2) {
-    return (t1.day == t2.day && t1.month == t2.month && t1.year == t2.year);
-  }
-
   @override
   Widget build(BuildContext context) {
     List<Widget> children = [];
@@ -24,16 +20,19 @@ class ListViewContent extends StatelessWidget {
     List<Transaction> transactions = [
       new Transaction(
           TransactionType.Sale, 12.0, "Aloha Island Grill", new DateTime.now()),
-      new Transaction(TransactionType.Sale, 12.0,
-          "Bruchi's CheaseStakes & Subs", new DateTime.now()),
-      new Transaction(TransactionType.Sale, 12.0, "Carls Jr",
+      new Transaction(
+          TransactionType.Sale,
+          12.0,
+          "Bruchi's CheaseStakes & Subs",
           new DateTime.now().subtract(new Duration(days: 1))),
-      new Transaction(TransactionType.Sale, 12.0, "Caruso's",
+      new Transaction(TransactionType.Sale, 12.0, "Carls Jr",
           new DateTime.now().subtract(new Duration(days: 2))),
+      new Transaction(TransactionType.Sale, 12.0, "Caruso's",
+          new DateTime.now().subtract(new Duration(days: 3))),
       new Transaction(TransactionType.Sale, 12.0, "Clarks Fork",
           new DateTime.now().subtract(new Duration(days: 4))),
       new Transaction(TransactionType.Sale, 12.0, "Domino's Pizza",
-          new DateTime.now().subtract(new Duration(days: 4))),
+          new DateTime.now().subtract(new Duration(days: 6))),
     ];
 
     transactions.sort((a, b) => b.time.compareTo(a.time));
@@ -42,12 +41,29 @@ class ListViewContent extends StatelessWidget {
     for (int i = transactions.length - 1; i >= 0; i--) {
       Transaction transaction = transactions[i];
 
-      if (i < transactions.length - 2 &&
-          !isSameDay(transactions[i + 1].time, transaction.time)) {
+      if (transaction.name == "Domino's Pizza") {
+        debugPrint("DOMIN-HOES: " + (i < transactions.length - 2).toString());
+      }
+
+      if (i == transactions.length - 1 &&
+          !TimeRow.isSameDay(transactions[i - 1].time, transaction.time)) {
+        children.add(new TransactionRow(
+            width: listTileWidth.value,
+            margin: listSlidePosition.value * (++margin),
+            transaction: transaction));
+
         children.add(new TimeRow(
             width: listTileWidth.value,
             margin: listSlidePosition.value * (++margin),
-            time: transaction.time));
+            time: transactions[i].time));
+
+        margin -= 0.75;
+      } else if (i < transactions.length - 2 &&
+          !TimeRow.isSameDay(transactions[i + 1].time, transaction.time)) {
+        children.add(new TimeRow(
+            width: listTileWidth.value,
+            margin: listSlidePosition.value * (++margin),
+            time: transactions[i + 1].time));
 
         margin += 0.25;
 
