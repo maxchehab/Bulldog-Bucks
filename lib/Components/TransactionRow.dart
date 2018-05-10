@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../Screens/Home/styles.dart';
 
 import 'Transaction.dart';
 
@@ -7,12 +6,10 @@ class TransactionRow extends StatelessWidget {
   final EdgeInsets margin;
   final double width;
   final Transaction transaction;
+  final bool applyBoxShadow;
 
-  TransactionRow({
-    this.width,
-    this.margin,
-    this.transaction,
-  });
+  TransactionRow(
+      {this.width, this.margin, this.transaction, this.applyBoxShadow = false});
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +18,16 @@ class TransactionRow extends StatelessWidget {
       margin: margin,
       width: width,
       decoration: new BoxDecoration(
-        color: Colors.white,
-        border: new Border(
-          top: new BorderSide(
-              width: 1.0, color: const Color.fromRGBO(204, 204, 204, 0.3)),
-          bottom: new BorderSide(
-              width: 1.0, color: const Color.fromRGBO(204, 204, 204, 0.3)),
-        ),
-      ),
+          color: Colors.white,
+          border: new Border(
+            top: new BorderSide(width: 0.5, color: Colors.black12),
+          ),
+          boxShadow: [
+            new BoxShadow(
+              color: Colors.black26,
+              blurRadius: applyBoxShadow ? 2.0 : 0.0,
+            ),
+          ]),
       child: new Row(
         children: <Widget>[
           new Container(

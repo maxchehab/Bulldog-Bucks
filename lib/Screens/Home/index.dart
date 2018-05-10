@@ -3,7 +3,7 @@ import 'styles.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/animation.dart';
 import 'dart:async';
-import '../../Components/ListViewContainer.dart';
+import '../../Components/TransactionContainer.dart';
 import '../../Components/BalanceHeader.dart';
 import '../../Components/FadeBox.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
@@ -14,6 +14,8 @@ class HomeScreen extends StatefulWidget {
   @override
   HomeScreenState createState() => new HomeScreenState();
 }
+
+enum HomeDropDown { settings, share }
 
 class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Animation<double> containerGrowAnimation;
@@ -135,6 +137,9 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
     return (new Scaffold(
       body: new Container(
+        decoration: new BoxDecoration(
+          color: new Color.fromRGBO(242, 242, 242, 1.0),
+        ),
         width: screenSize.width,
         height: screenSize.height,
         child: new Stack(
@@ -144,12 +149,35 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               shrinkWrap: _screenController.value < 1 ? false : true,
               padding: const EdgeInsets.all(0.0),
               children: <Widget>[
-                new BalanceHeader(
-                  backgroundImage: backgroundImage,
-                  containerGrowAnimation: containerGrowAnimation,
-                  balance: "\$100.00",
+                new Stack(
+                  children: <Widget>[
+                    new BalanceHeader(
+                      backgroundImage: backgroundImage,
+                      containerGrowAnimation: containerGrowAnimation,
+                      balance: "\$100.00",
+                    ),
+                    new PopupMenuButton<HomeDropDown>(
+                      padding: new EdgeInsets.only(
+                          left: screenSize.width - 50.0, top: 55.0),
+                      icon: new Icon(
+                        Icons.more_vert,
+                        color: Colors.white70,
+                      ),
+                      itemBuilder: (BuildContext context) =>
+                          <PopupMenuEntry<HomeDropDown>>[
+                            const PopupMenuItem<HomeDropDown>(
+                              value: HomeDropDown.settings,
+                              child: const Text('Settings'),
+                            ),
+                            const PopupMenuItem<HomeDropDown>(
+                              value: HomeDropDown.share,
+                              child: const Text('Share'),
+                            )
+                          ],
+                    )
+                  ],
                 ),
-                new ListViewContent(
+                new TransactionContainer(
                   listSlideAnimation: listSlideAnimation,
                   listSlidePosition: listSlidePosition,
                   listTileWidth: listTileWidth,

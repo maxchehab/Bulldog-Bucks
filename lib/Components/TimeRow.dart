@@ -49,20 +49,14 @@ class TimeRow extends StatelessWidget {
   static String phrase(DateTime time) {
     DateTime today = new DateTime.now();
     DateTime yesterday = new DateTime.now().subtract(new Duration(days: 1));
-
     if (isSameDay(time, today)) {
       return "Today";
     } else if (isSameDay(time, yesterday)) {
       return "Yesterday";
-    } else if (time.difference(today).inDays < 5) {
+    } else if (time.difference(today).inDays > -5) {
       return weekdays[time.weekday - 1];
     } else {
-      return weekdays[time.weekday - 1] +
-          ", " +
-          months[time.month - 1] +
-          suffix(time.day) +
-          ", " +
-          time.year.toString();
+      return months[time.month - 1] + " " + suffix(time.day);
     }
   }
 
@@ -74,31 +68,30 @@ class TimeRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return (new Container(
       alignment: Alignment.center,
-      margin: margin,
+      height: 42.0,
+      margin: new EdgeInsets.only(
+          left: 0.0,
+          top: margin.top,
+          bottom: margin.bottom,
+          right: margin.right),
       width: width,
       decoration: new BoxDecoration(
-        color: Colors.white,
         border: new Border(
-          top: new BorderSide(
-              width: 1.0, color: const Color.fromRGBO(204, 204, 204, 0.3)),
-          bottom: new BorderSide(
-              width: 1.0, color: const Color.fromRGBO(204, 204, 204, 0.3)),
+          top: new BorderSide(width: 0.5, color: Colors.black12),
+          bottom: new BorderSide(width: 0.5, color: Colors.black12),
         ),
       ),
       child: new Row(
         children: <Widget>[
-          new Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              new Text(
+          new Container(
+              margin: new EdgeInsets.only(left: 20.0),
+              child: new Text(
                 phrase(time),
                 style: new TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.red),
-              )
-            ],
-          )
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w500,
+                    color: new Color.fromARGB(250, 97, 97, 97)),
+              ))
         ],
       ),
     ));
