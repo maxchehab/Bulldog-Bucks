@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../Components/AddButton.dart';
+import '../../Components/Settings.dart';
 import 'styles.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/animation.dart';
@@ -6,6 +8,7 @@ import 'dart:async';
 import '../../Components/TransactionContainer.dart';
 import '../../Components/BalanceHeader.dart';
 import '../../Components/FadeBox.dart';
+import '../../Components/PopupMenu.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
 class HomeScreen extends StatefulWidget {
@@ -15,18 +18,18 @@ class HomeScreen extends StatefulWidget {
   HomeScreenState createState() => new HomeScreenState();
 }
 
-enum HomeDropDown { settings, share }
-
 class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Animation<double> containerGrowAnimation;
   AnimationController _screenController;
-  AnimationController _buttonController;
+  AnimationController _settingController;
   Animation<double> buttonGrowAnimation;
   Animation<double> listTileWidth;
   Animation<Alignment> listSlideAnimation;
   Animation<Alignment> buttonSwingAnimation;
   Animation<EdgeInsets> listSlidePosition;
   Animation<Color> fadeScreenAnimation;
+  bool showSettings = false;
+
   var animateStatus = 0;
 
   @override
@@ -35,8 +38,8 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
     _screenController = new AnimationController(
         duration: new Duration(milliseconds: 2000), vsync: this);
-    _buttonController = new AnimationController(
-        duration: new Duration(milliseconds: 1500), vsync: this);
+    _settingController = new AnimationController(
+        duration: new Duration(milliseconds: 500), vsync: this);
 
     fadeScreenAnimation = new ColorTween(
       begin: const Color.fromRGBO(247, 64, 106, 1.0),
@@ -120,94 +123,112 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   void dispose() {
     _screenController.dispose();
-    _buttonController.dispose();
+    _settingController.dispose();
     super.dispose();
   }
 
-  Future<Null> _playAnimation() async {
+  Future<Null> _showSettings() async {
     try {
-      await _buttonController.forward();
+      await _settingController.forward();
     } on TickerCanceled {}
+  }
+
+  Future<Null> _hideSettings(bool dismissed) async {
+    debugPrint("dismissed: " + dismissed.toString());
+    if (dismissed) {
+      setState(() {
+        showSettings = false;
+      });
+      _settingController.reset();
+    } else {
+      try {
+        await _settingController.reverse();
+        setState(() {
+          showSettings = false;
+        });
+      } on TickerCanceled {}
+    }
+  }
+
+  Future<bool> _willPop() {
+    if (showSettings) {
+      _hideSettings(false);
+      return Future<bool>.value(false);
+    }
+    return Future<bool>.value(true);
   }
 
   @override
   Widget build(BuildContext context) {
     timeDilation = 0.3;
-    Size screenSize = MediaQuery.of(context).size;
 
-    return (new Scaffold(
-      body: new Container(
-        decoration: new BoxDecoration(
-          color: new Color.fromRGBO(242, 242, 242, 1.0),
-        ),
-        width: screenSize.width,
-        height: screenSize.height,
-        child: new Stack(
-          alignment: Alignment.bottomRight,
+    Size screenSize = MediaQuery.of(context).size;
+    Stack panel = new Stack(
+      alignment: Alignment.bottomRight,
+      children: <Widget>[
+        new ListView(
+          shrinkWrap: _screenController.value < 1 ? false : true,
+          padding: const EdgeInsets.all(0.0),
           children: <Widget>[
-            new ListView(
-              shrinkWrap: _screenController.value < 1 ? false : true,
-              padding: const EdgeInsets.all(0.0),
+            new Stack(
               children: <Widget>[
-                new Stack(
-                  children: <Widget>[
-                    new BalanceHeader(
-                      backgroundImage: backgroundImage,
-                      containerGrowAnimation: containerGrowAnimation,
-                      balance: "\$100.00",
-                    ),
-                    new PopupMenuButton<HomeDropDown>(
-                      padding: new EdgeInsets.only(
-                          left: screenSize.width - 50.0, top: 55.0),
-                      icon: new Icon(
-                        Icons.more_vert,
-                        color: Colors.white70,
-                      ),
-                      itemBuilder: (BuildContext context) =>
-                          <PopupMenuEntry<HomeDropDown>>[
-                            const PopupMenuItem<HomeDropDown>(
-                              value: HomeDropDown.settings,
-                              child: const Text('Settings'),
-                            ),
-                            const PopupMenuItem<HomeDropDown>(
-                              value: HomeDropDown.share,
-                              child: const Text('Share'),
-                            )
-                          ],
-                    )
-                  ],
+                new BalanceHeader(
+                  backgroundImage: backgroundImage,
+                  containerGrowAnimation: containerGrowAnimation,
+                  balance: "\$100.00",
                 ),
-                new TransactionContainer(
-                  listSlideAnimation: listSlideAnimation,
-                  listSlidePosition: listSlidePosition,
-                  listTileWidth: listTileWidth,
+                new PopupMenu(
+                  onSelected: (HomeDropDown action) {
+                    debugPrint("selected: " + action.toString());
+                    setState(() {
+                      showSettings = true;
+                    });
+                    _showSettings();
+                  },
+                  padding: new EdgeInsets.only(
+                      left: screenSize.width - 50.0, top: 42.0),
                 )
               ],
             ),
-            new FadeBox(
-              fadeScreenAnimation: fadeScreenAnimation,
-              containerGrowAnimation: containerGrowAnimation,
-            ),
-            // animateStatus == 0
-            //     ? new Padding(
-            //         padding: new EdgeInsets.all(20.0),
-            //         child: new InkWell(
-            //             splashColor: Colors.white,
-            //             highlightColor: Colors.white,
-            //             onTap: () {
-            //               setState(() {
-            //                 animateStatus = 1;
-            //               });
-            //               _playAnimation();
-            //             },
-            //             child: new AddButton(
-            //               buttonGrowAnimation: buttonGrowAnimation,
-            //             )))
-            //     : new StaggerAnimation(
-            //         buttonController: _buttonController.view),
+            new TransactionContainer(
+              listSlideAnimation: listSlideAnimation,
+              listSlidePosition: listSlidePosition,
+              listTileWidth: listTileWidth,
+            )
           ],
         ),
-      ),
-    ));
+        new FadeBox(
+          fadeScreenAnimation: fadeScreenAnimation,
+          containerGrowAnimation: containerGrowAnimation,
+        ),
+        showSettings
+            ? new Settings(
+                size: screenSize,
+                close: (dismissed) => _hideSettings(dismissed),
+                controller: _settingController.view)
+            : new Container(),
+        // new Padding(
+        //     padding: new EdgeInsets.all(20.0),
+        //     child: new InkWell(
+        //         splashColor: Colors.white,
+        //         highlightColor: Colors.white,
+        //         onTap: () {},
+        //         child: new AddButton(
+        //           buttonGrowAnimation: buttonGrowAnimation,
+        //         )))
+      ],
+    );
+    return new WillPopScope(
+        onWillPop: _willPop,
+        child: new Scaffold(
+          body: new Container(
+            decoration: new BoxDecoration(
+              color: new Color.fromRGBO(242, 242, 242, 1.0),
+            ),
+            width: screenSize.width,
+            height: screenSize.height,
+            child: panel,
+          ),
+        ));
   }
 }
