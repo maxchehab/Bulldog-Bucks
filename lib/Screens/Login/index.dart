@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/animation.dart';
 import 'dart:async';
 import '../../Components/SignUpLink.dart';
-import '../../Components/Form.dart';
+import '../../Components/LoginForm.dart';
 import '../../Components/SignInButton.dart';
 import '../../Components/BulldogTitle.dart';
 import 'package:flutter/services.dart';
@@ -21,6 +21,7 @@ class LoginScreenState extends State<LoginScreen>
     with TickerProviderStateMixin {
   AnimationController _loginButtonController;
   var animationStatus = 0;
+
   @override
   void initState() {
     super.initState();
@@ -45,7 +46,9 @@ class LoginScreenState extends State<LoginScreen>
   Widget build(BuildContext context) {
     timeDilation = 0.4;
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+
     return (new Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: new Container(
           decoration: new BoxDecoration(
             image: backgroundImage,
@@ -71,7 +74,7 @@ class LoginScreenState extends State<LoginScreen>
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           new BulldogTitle(),
-                          new FormContainer(),
+                          new LoginForm(),
                           new SignUpLink()
                         ],
                       ),

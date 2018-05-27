@@ -39,7 +39,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     _screenController = new AnimationController(
         duration: new Duration(milliseconds: 2000), vsync: this);
     _settingController = new AnimationController(
-        duration: new Duration(milliseconds: 500), vsync: this);
+        duration: new Duration(milliseconds: 250), vsync: this);
 
     fadeScreenAnimation = new ColorTween(
       begin: const Color.fromRGBO(247, 64, 106, 1.0),

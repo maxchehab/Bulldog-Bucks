@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './InputFields.dart';
+import './InputField.dart';
 
-class FormContainer extends StatelessWidget {
+class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (new Container(
@@ -13,12 +13,12 @@ class FormContainer extends StatelessWidget {
               child: new Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              new InputFieldArea(
+              new InputField(
                 hint: "Username",
                 obscure: false,
                 icon: Icons.person_outline,
               ),
-              new InputFieldArea(
+              new InputField(
                 hint: "Password",
                 obscure: true,
                 icon: Icons.lock_outline,

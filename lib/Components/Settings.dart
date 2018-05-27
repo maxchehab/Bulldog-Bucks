@@ -56,7 +56,6 @@ class Settings extends StatelessWidget {
             return _generateDismissible();
           }),
     ));
-    // return _generateDismissible();
   }
 
   @override
