@@ -83,7 +83,7 @@ class InputFieldState extends State<InputField> {
               hintStyle: const TextStyle(color: Colors.white, fontSize: 15.0),
               contentPadding: obscure
                   ? const EdgeInsets.only(
-                      top: 30.0, right: 80.0, bottom: 30.0, left: 5.0)
+                      top: 30.0, right: 100.0, bottom: 30.0, left: 5.0)
                   : const EdgeInsets.only(
                       top: 30.0, right: 30.0, bottom: 30.0, left: 5.0),
             ),

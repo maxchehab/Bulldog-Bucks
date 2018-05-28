@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './InputField.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
 
 class LoginForm extends StatefulWidget {
   LoginForm({this.onFieldCompleted});
@@ -15,6 +16,8 @@ class LoginFormState extends State<LoginForm> {
 
   final FocusNode passwordFocusNode = new FocusNode();
   final OnFieldCompleted onFieldCompleted;
+
+  bool rememberMe = true;
 
   @override
   void dispose() {
@@ -49,6 +52,23 @@ class LoginFormState extends State<LoginForm> {
                   icon: Icons.lock_outline,
                   onFieldCompleted: onFieldCompleted,
                   focusNode: passwordFocusNode),
+              // new Row(
+              //   children: <Widget>[
+              //     new Text("Remember me",
+              //         style: const TextStyle(color: Colors.white)),
+              //     new Checkbox(
+              //         value: rememberMe,
+              //         // activeColor: Colors.blue,
+              //         activeColor: const Color.fromRGBO(247, 64, 106, 1.0),
+              //         borderColor: Colors.green,
+              //         // borderColor: Colors.green,
+              //         onChanged: (bool value) {
+              //           setState(() {
+              //             rememberMe = value;
+              //           });
+              //         })
+              //   ],
+              // ),
             ],
           )),
         ],

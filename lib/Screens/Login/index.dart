@@ -7,7 +7,7 @@ import 'dart:async';
 import '../../Components/SignUpLink.dart';
 import '../../Components/LoginForm.dart';
 import '../../Components/SignInButton.dart';
-import '../../Components/BulldogTitle.dart';
+import '../../Components/CustomTitle.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
@@ -80,7 +80,7 @@ class LoginScreenState extends State<LoginScreen>
                       new Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          new BulldogTitle(),
+                          new CustomTitle("Bulldog Bucks"),
                           new LoginForm(
                             onFieldCompleted: (value) {
                               login();

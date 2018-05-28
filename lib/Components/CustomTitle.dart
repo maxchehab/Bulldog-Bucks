@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class BulldogTitle extends StatelessWidget {
-  BulldogTitle();
+class CustomTitle extends StatelessWidget {
+  final String title;
+  CustomTitle(String title) : this.title = title;
   @override
   Widget build(BuildContext context) {
     return (new Container(
@@ -11,7 +12,7 @@ class BulldogTitle extends StatelessWidget {
             child: new RichText(
           textAlign: TextAlign.center,
           text: new TextSpan(
-              text: 'Bulldog Bucks',
+              text: title,
               style:
                   new TextStyle(fontSize: 38.0, fontWeight: FontWeight.bold)),
         ))));
