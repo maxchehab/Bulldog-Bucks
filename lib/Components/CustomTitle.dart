@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class CustomTitle extends StatelessWidget {
   final String title;
-  CustomTitle(String title) : this.title = title;
+  final double width;
+  final double height;
+  CustomTitle(String title, {this.width, this.height}) : this.title = title;
   @override
   Widget build(BuildContext context) {
     return (new Container(
-        width: 250.0,
-        height: 250.0,
+        width: width,
+        height: height,
         child: new Center(
             child: new RichText(
           textAlign: TextAlign.center,

@@ -80,7 +80,11 @@ class LoginScreenState extends State<LoginScreen>
                       new Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          new CustomTitle("Bulldog Bucks"),
+                          new CustomTitle(
+                            "Bulldog Bucks",
+                            height: 250.0,
+                            width: 250.0,
+                          ),
                           new LoginForm(
                             onFieldCompleted: (value) {
                               login();

@@ -51,24 +51,7 @@ class LoginFormState extends State<LoginForm> {
                   obscure: true,
                   icon: Icons.lock_outline,
                   onFieldCompleted: onFieldCompleted,
-                  focusNode: passwordFocusNode),
-              // new Row(
-              //   children: <Widget>[
-              //     new Text("Remember me",
-              //         style: const TextStyle(color: Colors.white)),
-              //     new Checkbox(
-              //         value: rememberMe,
-              //         // activeColor: Colors.blue,
-              //         activeColor: const Color.fromRGBO(247, 64, 106, 1.0),
-              //         borderColor: Colors.green,
-              //         // borderColor: Colors.green,
-              //         onChanged: (bool value) {
-              //           setState(() {
-              //             rememberMe = value;
-              //           });
-              //         })
-              //   ],
-              // ),
+                  focusNode: passwordFocusNode)
             ],
           )),
         ],

@@ -158,6 +158,10 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return Future<bool>.value(true);
   }
 
+  Future<Null> _logout() async {
+    Navigator.pushReplacementNamed(context, "/login");
+  }
+
   @override
   Widget build(BuildContext context) {
     timeDilation = 0.3;
@@ -205,7 +209,9 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             ? new Settings(
                 size: screenSize,
                 close: (dismissed) => _hideSettings(dismissed),
-                controller: _settingController.view)
+                controller: _settingController.view,
+                logout: _logout,
+              )
             : new Container(),
         // new Padding(
         //     padding: new EdgeInsets.all(20.0),

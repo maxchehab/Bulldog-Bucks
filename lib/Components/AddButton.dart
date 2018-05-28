@@ -10,8 +10,7 @@ class AddButton extends StatelessWidget {
       height: buttonGrowAnimation.value * 60,
       alignment: FractionalOffset.center,
       decoration: new BoxDecoration(
-          color: const Color.fromRGBO(247, 64, 106, 1.0),
-          shape: BoxShape.circle),
+          color: Theme.of(context).accentColor, shape: BoxShape.circle),
       child: new Icon(
         Icons.add,
         size: buttonGrowAnimation.value * 40.0,

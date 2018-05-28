@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'CustomTitle.dart';
+import 'LogoutSettings.dart';
+import 'BudgetingSettings.dart';
+import 'FreezeSettings.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'dart:async';
 
 typedef Future<Null> CloseAnimationCallback(bool);
 
 class Settings extends StatelessWidget {
-  Settings({this.size, Key key, this.close, this.controller})
+  Settings({this.size, Key key, this.close, this.logout, this.controller})
       : scrollAnimation = new Tween(
           begin: -size.height,
           end: 0.0,
@@ -16,11 +19,12 @@ class Settings extends StatelessWidget {
 
   final Animation<double> controller;
   final CloseAnimationCallback close;
+  final LogoutCallback logout;
   final Size size;
   final Animation scrollAnimation;
   final List<int> dismissibleList = [0];
 
-  Dismissible _generateDismissible() {
+  Dismissible _generateDismissible(BuildContext context) {
     return new Dismissible(
         key: new ObjectKey(null),
         direction: DismissDirection.up,
@@ -30,23 +34,46 @@ class Settings extends StatelessWidget {
           close(true);
         },
         child: new Container(
-          height: size.height,
-          width: size.width,
-          decoration: new BoxDecoration(
-            color: const Color.fromRGBO(247, 64, 106, 1.0),
-          ),
-          child: new Stack(
-            alignment: AlignmentDirectional.bottomCenter,
-            children: <Widget>[
-              new Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  new CustomTitle("Settings"),
-                ],
-              ),
-            ],
-          ),
-        ));
+            height: size.height,
+            width: size.width,
+            decoration: new BoxDecoration(
+              color: Theme.of(context).accentColor,
+            ),
+            child: new Stack(
+              children: <Widget>[
+                // new Padding(
+                //     padding: new EdgeInsets.only(
+                //         left: screenSize.width - 60.0, top: 42.0),
+                //     child: new InkWell(
+                //       onTap: () {
+                //         close(false);
+                //       },
+                //       child: new Icon(
+                //         Icons.arrow_upward,
+                //         color: Colors.white,
+                //         size: 40.0,
+                //       ),
+                //     )),
+                new Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    new Container(
+                        decoration: new BoxDecoration(
+                            border: new Border(
+                          bottom: new BorderSide(
+                            width: 0.5,
+                            color: Colors.white24,
+                          ),
+                        )),
+                        padding: new EdgeInsets.only(top: 45.0, bottom: 20.0),
+                        child: new CustomTitle("Settings")),
+                    new BudgetingSettings(),
+                    new FreezeSettings(),
+                    new LogoutSettings(logout),
+                  ],
+                )
+              ],
+            )));
   }
 
   Widget _build(BuildContext context, Widget child) {
@@ -57,7 +84,7 @@ class Settings extends StatelessWidget {
           padding: new EdgeInsets.all(0.0),
           itemCount: dismissibleList.length,
           itemBuilder: (context, index) {
-            return _generateDismissible();
+            return _generateDismissible(context);
           }),
     ));
   }
