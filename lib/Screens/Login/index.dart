@@ -42,6 +42,13 @@ class LoginScreenState extends State<LoginScreen>
     } on TickerCanceled {}
   }
 
+  void login() {
+    setState(() {
+      animationStatus = 1;
+    });
+    _playAnimation();
+  }
+
   @override
   Widget build(BuildContext context) {
     timeDilation = 0.4;
@@ -74,7 +81,11 @@ class LoginScreenState extends State<LoginScreen>
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           new BulldogTitle(),
-                          new LoginForm(),
+                          new LoginForm(
+                            onFieldCompleted: (value) {
+                              login();
+                            },
+                          ),
                           new SignUpLink()
                         ],
                       ),
@@ -83,10 +94,7 @@ class LoginScreenState extends State<LoginScreen>
                               padding: const EdgeInsets.only(bottom: 50.0),
                               child: new InkWell(
                                   onTap: () {
-                                    setState(() {
-                                      animationStatus = 1;
-                                    });
-                                    _playAnimation();
+                                    login();
                                   },
                                   child: new SignInButton()),
                             )
