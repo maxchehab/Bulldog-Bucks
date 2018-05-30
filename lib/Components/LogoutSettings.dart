@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-typedef Future<Null> LogoutCallback();
+typedef void LogoutCallback();
 
 class LogoutSettings extends StatelessWidget {
   LogoutSettings(this.logout);
 
   final LogoutCallback logout;
 
-  Future<Null> _neverSatisfied(BuildContext context) async {
+  Future<Null> _logout(BuildContext context) async {
     return showDialog<Null>(
       context: context,
       barrierDismissible: true,
@@ -53,8 +53,7 @@ class LogoutSettings extends StatelessWidget {
         child: new InkWell(
             child: new FlatButton(
           onPressed: () {
-            _neverSatisfied(context);
-            //logout();
+            _logout(context);
           },
           child: new ListTile(
               contentPadding: new EdgeInsets.all(20.0),

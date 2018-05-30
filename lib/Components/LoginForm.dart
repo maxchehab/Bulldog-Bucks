@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import './InputField.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
 
 class LoginForm extends StatefulWidget {
   LoginForm({this.onFieldCompleted});

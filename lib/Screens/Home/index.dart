@@ -158,7 +158,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return Future<bool>.value(true);
   }
 
-  Future<Null> _logout() async {
+  void _logout() {
     Navigator.pushReplacementNamed(context, "/login");
   }
 

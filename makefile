@@ -2,4 +2,4 @@ all:
 	flutter run
 
 emulator:
-	emulator -list-avds | xargs -i emulator -avd {} &
+	emulator -avd Pixel_2_API_26 &

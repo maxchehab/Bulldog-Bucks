@@ -41,19 +41,6 @@ class Settings extends StatelessWidget {
             ),
             child: new Stack(
               children: <Widget>[
-                // new Padding(
-                //     padding: new EdgeInsets.only(
-                //         left: screenSize.width - 60.0, top: 42.0),
-                //     child: new InkWell(
-                //       onTap: () {
-                //         close(false);
-                //       },
-                //       child: new Icon(
-                //         Icons.arrow_upward,
-                //         color: Colors.white,
-                //         size: 40.0,
-                //       ),
-                //     )),
                 new Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
