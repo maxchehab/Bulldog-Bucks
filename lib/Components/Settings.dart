@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'CustomTitle.dart';
 import 'LogoutSettings.dart';
 import 'BudgetingSettings.dart';
+import 'CarouselSettings.dart';
 import 'FreezeSettings.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'dart:async';
@@ -54,6 +55,7 @@ class Settings extends StatelessWidget {
                         )),
                         padding: new EdgeInsets.only(top: 45.0, bottom: 20.0),
                         child: new CustomTitle("Settings")),
+                    new CarouselSettings(),
                     new BudgetingSettings(),
                     new FreezeSettings(),
                     new LogoutSettings(logout),
