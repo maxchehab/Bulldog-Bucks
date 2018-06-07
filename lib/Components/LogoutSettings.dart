@@ -22,20 +22,22 @@ class LogoutSettings extends StatelessWidget {
                 Navigator.of(context).pop();
               },
             ),
-            new Container(
-                height: 40.0,
-                width: 120.0,
-                alignment: FractionalOffset.center,
-                decoration: new BoxDecoration(
-                  color: Theme.of(context).accentColor,
-                  borderRadius:
-                      new BorderRadius.all(const Radius.circular(30.0)),
-                ),
-                child: new InkWell(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      logout();
-                    },
+            new InkWell(
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                onTap: () {
+                  Navigator.of(context).pop();
+                  logout();
+                },
+                child: new Container(
+                    height: 40.0,
+                    width: 120.0,
+                    alignment: FractionalOffset.center,
+                    decoration: new BoxDecoration(
+                      color: Theme.of(context).accentColor,
+                      borderRadius:
+                          new BorderRadius.all(const Radius.circular(30.0)),
+                    ),
                     child: new Text("Yes, I'm sure.",
                         style: new TextStyle(color: Colors.white))))
           ],

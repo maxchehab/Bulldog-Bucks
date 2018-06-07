@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Transaction.dart';
+import '../Utils/Transaction.dart';
 
 class TransactionRow extends StatelessWidget {
   final EdgeInsets margin;

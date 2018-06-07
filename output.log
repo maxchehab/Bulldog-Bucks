@@ -1,0 +1,1201 @@
+flutter run
+Using hardware rendering with device Android SDK built for x86. If you get graphics artifacts, consider enabling software rendering with "--enable-software-rendering".
+Launching lib/main.dart on Android SDK built for x86 in debug mode...
+Initializing gradle...
+Built build/app/outputs/apk/debug/app-debug.apk.
+I/FlutterActivityDelegate( 4493): onResume setting current activity to this
+D/gralloc_ranchu( 4493): Emulator without host-side GPU emulation detected. Loading gralloc.default.so from /vendor/lib/hw/gralloc.goldfish.default.so...
+Syncing files to device Android SDK built for x86...
+I/flutter ( 4493): Instance of 'UserData'
+I/flutter ( 4493): ============================================
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Einstein Bagel Bros
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Forza Coffee Company
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Papercut Printing
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): The Bulldog
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Ultimate Bagel Inc.
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Mod Pizza
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Wendy's
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Bulldog
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Financial Office
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 3 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Domino's Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sonic
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Forza Coffee Company
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Einstein Bagel Bros
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Dutch Bros Coffee
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Mod Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Domino's Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 5 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): The Cog
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Financial Office
+
+🔥  To hot reload changes while running, press "r". To hot restart (and rebuild state), press "R".
+An Observatory debugger and profiler on Android SDK built for x86 is available at: http://127.0.0.1:38571/
+For a more detailed help message, press "h". To quit, press "q".
+I/flutter ( 4493): ============================================
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Wendy's
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Bulldog
+I/flutter ( 4493): Papercut Printing
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Qdoba
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Mod Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 4 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 4 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Financial Office
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Financial Office
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): The Bulldog
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Einstein Bagel Bros
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Domino's Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Ultimate Bagel Inc.
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Mod Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sonic
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Forza Coffee Company
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Forza Coffee Company
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): The Cog
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Einstein Bagel Bros
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Dutch Bros Coffee
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Domino's Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): ============================================
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Wendy's
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Bulldog
+I/flutter ( 4493): Papercut Printing
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Qdoba
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Mod Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 4 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 4 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Financial Office
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Financial Office
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): The Bulldog
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Einstein Bagel Bros
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Domino's Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Ultimate Bagel Inc.
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Mod Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sonic
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Forza Coffee Company
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Forza Coffee Company
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): The Cog
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Einstein Bagel Bros
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Dutch Bros Coffee
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Domino's Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): ============================================
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Wendy's
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Bulldog
+I/flutter ( 4493): Papercut Printing
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Qdoba
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Mod Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 4 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 4 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Financial Office
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Financial Office
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): The Bulldog
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Einstein Bagel Bros
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Domino's Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Ultimate Bagel Inc.
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Mod Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sonic
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Forza Coffee Company
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Forza Coffee Company
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): The Cog
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Einstein Bagel Bros
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Dutch Bros Coffee
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Domino's Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): ============================================
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Wendy's
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Bulldog
+I/flutter ( 4493): Papercut Printing
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Qdoba
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Mod Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 4 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 4 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Financial Office
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Financial Office
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): The Bulldog
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Duff's Bistro
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): URM Cash & Carry
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Einstein Bagel Bros
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Domino's Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Ultimate Bagel Inc.
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Mod Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 1 line
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Jimmy John's
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sonic
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Forza Coffee Company
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Thomas Hammer Coffee Roasters
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Forza Coffee Company
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Pita Pit
+I/flutter ( 4493): Froyo Earth
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Clark's Fork
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): The Cog
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Follett
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Einstein Bagel Bros
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): The Zaggin' Wagon
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sodexo Vending
+I/chatty  ( 4493): uid=10095(u0_a95) 1.ui identical 2 lines
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Sub Connection
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Qdoba
+I/flutter ( 4493): Sodexo Vending
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): McDonalds
+I/flutter ( 4493): Dutch Bros Coffee
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Domino's Pizza
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): Starbucks
+I/flutter ( 4493): The Marketplace
+Lost connection to device.

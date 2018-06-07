@@ -8,6 +8,7 @@ import '../../Components/SignUpLink.dart';
 import '../../Components/LoginForm.dart';
 import '../../Components/SignInButton.dart';
 import '../../Components/CustomTitle.dart';
+import '../../Utils/WebRequest.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
@@ -20,40 +21,68 @@ class LoginScreen extends StatefulWidget {
 class LoginScreenState extends State<LoginScreen>
     with TickerProviderStateMixin {
   AnimationController _loginButtonController;
-  var animationStatus = 0;
+  bool playingAnimation = false;
+
+  final TextEditingController studentIdController = new TextEditingController(),
+      pinController = new TextEditingController();
+
+  WebRequest request;
 
   @override
   void initState() {
     super.initState();
     _loginButtonController = new AnimationController(
         duration: new Duration(milliseconds: 3000), vsync: this);
+    _loginButtonController.addStatusListener((AnimationStatus status) {
+      if (status == AnimationStatus.dismissed) {
+        setState(() {
+          playingAnimation = false;
+        });
+      }
+    });
   }
 
   @override
   void dispose() {
     _loginButtonController.dispose();
+    pinController.dispose();
+    studentIdController.dispose();
     super.dispose();
   }
 
   Future<Null> _playAnimation() async {
     try {
       await _loginButtonController.forward();
-      await _loginButtonController.reverse();
     } on TickerCanceled {}
   }
 
   void login() {
     setState(() {
-      animationStatus = 1;
+      playingAnimation = true;
     });
     _playAnimation();
+  }
+
+  Future<bool> test() async {
+    await new Future.delayed(new Duration(seconds: 2));
+    return false;
+  }
+
+  Future<dynamic> validate() async {
+    request ??= new WebRequest(
+        studentID: studentIdController.text, pin: pinController.text);
+
+    return await request.gatherData()
+        ? ValidatingResponse.valid
+        : ValidatingResponse.invalid;
   }
 
   @override
   Widget build(BuildContext context) {
     timeDilation = 0.4;
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-
+    LoginAnimation loginAnimation = new LoginAnimation(
+        validate: validate, buttonController: _loginButtonController.view);
     return (new Scaffold(
       resizeToAvoidBottomPadding: false,
       body: new Container(
@@ -72,42 +101,41 @@ class LoginScreenState extends State<LoginScreen>
                 end: const FractionalOffset(0.0, 1.0),
               )),
               child: new ListView(
-                padding: const EdgeInsets.all(0.0),
-                children: <Widget>[
-                  new Stack(
-                    alignment: AlignmentDirectional.bottomCenter,
-                    children: <Widget>[
-                      new Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  padding: const EdgeInsets.all(0.0),
+                  children: <Widget>[
+                    new Stack(
+                        alignment: AlignmentDirectional.bottomCenter,
                         children: <Widget>[
-                          new CustomTitle(
-                            "Bulldog Bucks",
-                            height: 250.0,
-                            width: 250.0,
+                          new Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              new CustomTitle(
+                                "Bulldog Bucks",
+                                height: 250.0,
+                                width: 250.0,
+                              ),
+                              new LoginForm(
+                                onFieldCompleted: (value) {
+                                  login();
+                                },
+                                studentIdController: studentIdController,
+                                pinController: pinController,
+                              ),
+                              new SignUpLink()
+                            ],
                           ),
-                          new LoginForm(
-                            onFieldCompleted: (value) {
-                              login();
-                            },
-                          ),
-                          new SignUpLink()
-                        ],
-                      ),
-                      animationStatus == 0
-                          ? new Padding(
-                              padding: const EdgeInsets.only(bottom: 50.0),
-                              child: new InkWell(
-                                  onTap: () {
-                                    login();
-                                  },
-                                  child: new SignInButton()),
-                            )
-                          : new StaggerAnimation(
-                              buttonController: _loginButtonController.view),
-                    ],
-                  ),
-                ],
-              ))),
+                          !playingAnimation
+                              ? new Padding(
+                                  padding: const EdgeInsets.only(bottom: 50.0),
+                                  child: new InkWell(
+                                      onTap: () {
+                                        login();
+                                      },
+                                      child: new SignInButton()),
+                                )
+                              : loginAnimation
+                        ])
+                  ]))),
     ));
   }
 }

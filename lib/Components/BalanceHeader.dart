@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 import 'Carousel.dart';
 
 class BalanceHeader extends StatelessWidget {
+  static NumberFormat currencyFormat = new NumberFormat("#,##0.00", "en_US");
+
   final DecorationImage backgroundImage;
   final String balance;
   final Animation<double> containerGrowAnimation;
   final double height = 100.0;
   BalanceHeader(
-      {this.backgroundImage, this.containerGrowAnimation, this.balance});
+      {this.backgroundImage, this.containerGrowAnimation, double balance})
+      : this.balance = "\$${currencyFormat.format(balance)}";
 
   @override
   Widget build(BuildContext context) {

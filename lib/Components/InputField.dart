@@ -1,54 +1,30 @@
 import 'package:flutter/material.dart';
 
-typedef void OnFieldCompleted(String value);
-
 class InputField extends StatefulWidget {
   final String hint;
   final bool obscure;
   final IconData icon;
-  final OnFieldCompleted onFieldCompleted;
+  final ValueChanged<String> onFieldCompleted;
   final bool autofocus;
   final FocusNode focusNode;
   final TextInputType keyboardType;
+  final TextEditingController controller;
   InputField(
       {this.hint,
       this.obscure,
       this.icon,
       this.onFieldCompleted,
+      this.controller,
       this.autofocus = false,
       this.focusNode,
       this.keyboardType});
 
   @override
-  InputFieldState createState() => new InputFieldState(
-      hint: hint,
-      obscure: obscure,
-      icon: icon,
-      onFieldCompleted: onFieldCompleted,
-      autofocus: autofocus,
-      focusNode: focusNode,
-      keyboardType: keyboardType);
+  InputFieldState createState() => new InputFieldState();
 }
 
 class InputFieldState extends State<InputField> {
-  final String hint;
-  final bool obscure;
-  final IconData icon;
-  final OnFieldCompleted onFieldCompleted;
-  final bool autofocus;
-  final FocusNode focusNode;
-  final TextInputType keyboardType;
-
   bool showText = false;
-
-  InputFieldState(
-      {this.hint,
-      this.obscure = false,
-      this.icon,
-      this.onFieldCompleted,
-      this.autofocus = false,
-      this.focusNode,
-      this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -63,32 +39,33 @@ class InputFieldState extends State<InputField> {
         ),
         child: new Stack(alignment: Alignment.bottomRight, children: [
           new TextFormField(
-            keyboardType: keyboardType,
-            focusNode: focusNode,
-            autofocus: autofocus,
+            controller: widget.controller,
+            keyboardType: widget.keyboardType,
+            focusNode: widget.focusNode,
+            autofocus: widget.autofocus,
             onFieldSubmitted: (value) {
-              onFieldCompleted(value);
+              widget.onFieldCompleted(value);
             },
-            obscureText: obscure && !showText,
+            obscureText: widget.obscure && !showText,
             style: const TextStyle(
               color: Colors.white,
             ),
             decoration: new InputDecoration(
               icon: new Icon(
-                icon,
+                widget.icon,
                 color: Colors.white,
               ),
               border: InputBorder.none,
-              hintText: hint,
+              hintText: widget.hint,
               hintStyle: const TextStyle(color: Colors.white, fontSize: 15.0),
-              contentPadding: obscure
+              contentPadding: widget.obscure
                   ? const EdgeInsets.only(
                       top: 30.0, right: 100.0, bottom: 30.0, left: 5.0)
                   : const EdgeInsets.only(
                       top: 30.0, right: 30.0, bottom: 30.0, left: 5.0),
             ),
           ),
-          obscure
+          widget.obscure
               ? new Padding(
                   padding: new EdgeInsets.all(30.0),
                   child: new InkWell(

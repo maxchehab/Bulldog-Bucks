@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-class StaggerAnimation extends StatelessWidget {
-  StaggerAnimation({Key key, this.buttonController})
-      : buttonSqueezeanimation = new Tween(
+enum ValidatingResponse { valid, invalid, validating }
+
+typedef Future<dynamic> LoginValidationCallback();
+
+class LoginAnimation extends StatelessWidget {
+  LoginAnimation(
+      {Key key, @required this.validate, @required this.buttonController})
+      : assert(validate != null),
+        assert(buttonController != null),
+        buttonSqueezeAnimation = new Tween(
           begin: 320.0,
           end: 70.0,
         ).animate(
@@ -45,31 +52,22 @@ class StaggerAnimation extends StatelessWidget {
 
   final AnimationController buttonController;
   final Animation<EdgeInsets> containerCircleAnimation;
-  final Animation buttonSqueezeanimation;
+  final Animation buttonSqueezeAnimation;
   final Animation buttomZoomOut;
-
-  Future<Null> _playAnimation() async {
-    try {
-      await buttonController.forward();
-      await buttonController.reverse();
-    } on TickerCanceled {}
-  }
+  final LoginValidationCallback validate;
+  bool asked = false;
 
   Widget _buildAnimation(BuildContext context, Widget child) {
     return new Padding(
-      padding: buttomZoomOut.value == 70
-          ? const EdgeInsets.only(bottom: 50.0)
-          : containerCircleAnimation.value,
-      child: new InkWell(
-          onTap: () {
-            _playAnimation();
-          },
-          child: new Hero(
+        padding: buttomZoomOut.value == 70
+            ? const EdgeInsets.only(bottom: 50.0)
+            : containerCircleAnimation.value,
+        child: new Hero(
             tag: "fade",
             child: buttomZoomOut.value <= 300
                 ? new Container(
                     width: buttomZoomOut.value == 70
-                        ? buttonSqueezeanimation.value
+                        ? buttonSqueezeAnimation.value
                         : buttomZoomOut.value,
                     height:
                         buttomZoomOut.value == 70 ? 60.0 : buttomZoomOut.value,
@@ -80,7 +78,7 @@ class StaggerAnimation extends StatelessWidget {
                           ? new BorderRadius.all(const Radius.circular(30.0))
                           : new BorderRadius.all(const Radius.circular(0.0)),
                     ),
-                    child: buttonSqueezeanimation.value > 75.0
+                    child: buttonSqueezeAnimation.value > 75.0
                         ? new Text(
                             "Sign In",
                             style: new TextStyle(
@@ -106,15 +104,34 @@ class StaggerAnimation extends StatelessWidget {
                           ? BoxShape.circle
                           : BoxShape.rectangle,
                       color: Theme.of(context).accentColor,
-                    ),
-                  ),
-          )),
-    );
+                    ))));
+  }
+
+  buttonSqueezeListener() async {
+    if (buttonSqueezeAnimation.value == 70 && !asked) {
+      asked = true;
+      buttonController.stop();
+      ValidatingResponse response = await validate();
+      if (response == ValidatingResponse.valid) {
+        buttonController.forward();
+      } else if (response == ValidatingResponse.invalid) {
+        buttonController.reverse();
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    buttonController.addListener(() {
+    buttonSqueezeAnimation.addListener(buttonSqueezeListener);
+
+    buttonController.addStatusListener((AnimationStatus status) {
+      if (status == AnimationStatus.completed ||
+          status == AnimationStatus.dismissed) {
+        buttonSqueezeAnimation.removeListener(buttonSqueezeListener);
+      }
+    });
+
+    buttonController.addListener(() async {
       if (buttonController.isCompleted) {
         Navigator
             .of(context)

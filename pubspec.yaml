@@ -2,6 +2,10 @@ name: bulldog_bucks
 description: Manage your Gonzaga Bulldog Bucks
 
 dependencies:
+  html: any
+  
+  dio: any
+  
   flutter:
     sdk: flutter
 
@@ -37,26 +41,35 @@ flutter:
   - assets/logos/carusos-logo.png
   - assets/logos/clarks-fork-logo.jpg
   - assets/logos/dominos-logo.png
+  - assets/logos/duffs-logo.png
   - assets/logos/dutch-bros-coffee-logo.jpg
+  - assets/logos/einstein-bros-logo.gif
   - assets/logos/forza-logo.png
   - assets/logos/froyo-earth-logo.png
+  - assets/logos/gonzaga-logo.png
   - assets/logos/jimmy-johns-logo.png
   - assets/logos/kalico-kitchen-logo.jpg
   - assets/logos/mcdonalds-logo.jpeg
   - assets/logos/method-juice-logo.jpeg
   - assets/logos/mod-pizza-logo.png
   - assets/logos/papa-johns-logo.jpeg
+  - assets/logos/papercut-logo.png
   - assets/logos/pita-pit-logo.jpeg
   - assets/logos/qdoba-logo.png
+  - assets/logos/sodexo-logo.jpg
   - assets/logos/sonic-logo.jpg
   - assets/logos/starbucks-logo.png
+  - assets/logos/sub-connection-logo.png
   - assets/logos/sushi-sakai-logo.png
   - assets/logos/sweeto-burrito-logo.jpg
+  - assets/logos/the-bulldog-logo.png
   - assets/logos/thomas-hammer-logo.png
   - assets/logos/ultimate-bagel-logo.jpeg
   - assets/logos/urm-logo.png
   - assets/logos/wendys-logo.png
+  - assets/logos/zaggin-wagon-logo.png
   - assets/logos/zag-shop-logo.jpg
+  
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

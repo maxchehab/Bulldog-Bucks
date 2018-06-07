@@ -1,39 +1,23 @@
 import 'package:flutter/material.dart';
 import 'TimeRow.dart';
 import 'TransactionRow.dart';
-import 'Transaction.dart';
+import '../Utils/Transaction.dart';
 
 class TransactionContainer extends StatelessWidget {
+  TransactionContainer(
+      {this.listSlideAnimation,
+      this.listSlidePosition,
+      this.listTileWidth,
+      this.transactions});
+
   final Animation<double> listTileWidth;
   final Animation<Alignment> listSlideAnimation;
   final Animation<EdgeInsets> listSlidePosition;
-  TransactionContainer({
-    this.listSlideAnimation,
-    this.listSlidePosition,
-    this.listTileWidth,
-  });
+  final List<Transaction> transactions;
 
   @override
   Widget build(BuildContext context) {
     List<Widget> children = [];
-
-    List<Transaction> transactions = [
-      new Transaction(
-          TransactionType.Sale, 12.0, "Aloha Island Grill", new DateTime.now()),
-      new Transaction(
-          TransactionType.Sale,
-          12.0,
-          "Bruchi's CheaseStakes & Subs",
-          new DateTime.now().subtract(new Duration(days: 1))),
-      new Transaction(TransactionType.Sale, 12.0, "Carls Jr",
-          new DateTime.now().subtract(new Duration(days: 1))),
-      new Transaction(TransactionType.Sale, 12.0, "Caruso's",
-          new DateTime.now().subtract(new Duration(days: 3))),
-      new Transaction(TransactionType.Sale, 12.0, "Clarks Fork",
-          new DateTime.now().subtract(new Duration(days: 3))),
-      new Transaction(TransactionType.Sale, 12.0, "Domino's Pizza",
-          new DateTime.now().subtract(new Duration(days: 9))),
-    ];
 
     transactions.sort((a, b) => b.time.compareTo(a.time));
 

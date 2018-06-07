@@ -9,6 +9,8 @@ import '../../Components/TransactionContainer.dart';
 import '../../Components/BalanceHeader.dart';
 import '../../Components/FadeBox.dart';
 import '../../Components/PopupMenu.dart';
+import '../../Utils/WebRequest.dart';
+import '../../Utils/UserData.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
 class HomeScreen extends StatefulWidget {
@@ -28,14 +30,12 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Animation<Alignment> buttonSwingAnimation;
   Animation<EdgeInsets> listSlidePosition;
   Animation<Color> fadeScreenAnimation;
+  UserData userData;
   bool showSettings = false;
-
-  var animateStatus = 0;
 
   @override
   void initState() {
     super.initState();
-
     _screenController = new AnimationController(
         duration: new Duration(milliseconds: 2000), vsync: this);
     _settingController = new AnimationController(
@@ -91,6 +91,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         ),
       ),
     );
+
     buttonSwingAnimation = new AlignmentTween(
       begin: Alignment.topCenter,
       end: Alignment.bottomRight,
@@ -118,6 +119,10 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       ),
     );
     _screenController.forward();
+
+    setState(() {
+      userData = WebRequest.userData;
+    });
   }
 
   @override
@@ -179,7 +184,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 new BalanceHeader(
                   backgroundImage: backgroundImage,
                   containerGrowAnimation: containerGrowAnimation,
-                  balance: "\$100.00",
+                  balance: userData.balance,
                 ),
                 new PopupMenu(
                   onSelected: (HomeDropDown action) {
@@ -195,10 +200,10 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ],
             ),
             new TransactionContainer(
-              listSlideAnimation: listSlideAnimation,
-              listSlidePosition: listSlidePosition,
-              listTileWidth: listTileWidth,
-            )
+                listSlideAnimation: listSlideAnimation,
+                listSlidePosition: listSlidePosition,
+                listTileWidth: listTileWidth,
+                transactions: userData.transactions)
           ],
         ),
         new FadeBox(
